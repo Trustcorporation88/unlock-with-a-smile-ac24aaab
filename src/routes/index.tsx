@@ -191,7 +191,7 @@ function HomePage() {
             <div key={s.title} className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition hover:border-primary/40">
               <div className="absolute inset-x-0 -top-1 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 transition group-hover:opacity-100" />
               <s.icon className="h-7 w-7 text-primary" />
-              <h3 className="mt-4 font-serif text-xl">{s.title}</h3>
+              <h3 className="mt-4 font-serif text-xl text-card-foreground">{s.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
             </div>
           ))}
