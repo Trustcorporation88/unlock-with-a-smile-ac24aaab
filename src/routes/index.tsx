@@ -119,6 +119,60 @@ function HomePage() {
         </div>
       </section>
 
+      {/* MOBE — Modelagem de Orelha em Bebês */}
+      <section className="relative overflow-hidden">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 md:grid-cols-2 md:px-8 md:py-24">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-secondary">
+              <Heart className="h-3.5 w-3.5" /> MOBE · Diferencial
+            </span>
+            <h2 className="mt-5 font-serif text-4xl leading-tight md:text-5xl">
+              Modelagem de Orelha em <em className="text-primary">Bebês</em>, sem cirurgia
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              Técnica indolor e não-cirúrgica para correção de deformidades da orelha em recém-nascidos,
+              utilizando moldes especiais aplicados nas primeiras semanas de vida. Quanto mais cedo iniciado
+              (idealmente até 3 semanas), melhores os resultados — evitando a otoplastia cirúrgica no futuro.
+            </p>
+            <ul className="mt-6 space-y-3 text-sm">
+              <li className="flex gap-3"><Sparkles className="h-4 w-4 shrink-0 text-primary" /> Sem dor, sem anestesia, sem incisões.</li>
+              <li className="flex gap-3"><Sparkles className="h-4 w-4 shrink-0 text-primary" /> Ideal entre 1 e 6 semanas de vida.</li>
+              <li className="flex gap-3"><Sparkles className="h-4 w-4 shrink-0 text-primary" /> Corrige orelhas em abano, dobradas, em copo, lop e Stahl.</li>
+              <li className="flex gap-3"><Sparkles className="h-4 w-4 shrink-0 text-primary" /> Acompanhamento próximo ao longo do tratamento.</li>
+            </ul>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild size="lg" className="rounded-full px-6">
+                <Link to="/contato">Falar sobre MOBE</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="rounded-full border-border bg-transparent">
+                <Link to="/procedimentos">Saiba mais</Link>
+              </Button>
+            </div>
+          </div>
+          <div className="relative">
+            <div className="rounded-3xl bg-gradient-to-br from-secondary/15 via-primary/10 to-transparent p-8 ring-1 ring-border">
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { n: "1–3", t: "semanas", d: "Janela ideal de início" },
+                  { n: "0", t: "cirurgia", d: "Tratamento não invasivo" },
+                  { n: "4–6", t: "semanas", d: "Duração média do tratamento" },
+                  { n: "90%+", t: "eficácia", d: "Quando iniciado precocemente" },
+                ].map((s) => (
+                  <div key={s.t} className="rounded-2xl bg-card p-5 ring-1 ring-border">
+                    <p className="font-serif text-3xl text-primary">{s.n}</p>
+                    <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{s.t}</p>
+                    <p className="mt-2 text-xs text-muted-foreground">{s.d}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-6 text-center text-xs text-muted-foreground">
+                Pais e pediatras: se notarem alteração no formato da orelha do bebê, procurem avaliação o quanto antes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ESPECIALIDADES */}
       <section className="mx-auto max-w-7xl px-4 py-16 md:px-8">
         <div className="mx-auto max-w-2xl text-center">
