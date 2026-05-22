@@ -42,7 +42,7 @@ export const Route = createFileRoute("/procedimentos/$slug")({
 });
 
 function CategoryPage() {
-  const { category } = Route.useLoaderData();
+  const { category } = Route.useLoaderData() as { category: ProcedureCategory };
   const related = categories.filter((c) => c.slug !== category.slug).slice(0, 3);
 
   return (
