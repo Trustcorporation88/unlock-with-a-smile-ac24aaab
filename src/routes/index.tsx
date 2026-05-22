@@ -277,7 +277,7 @@ function HomePage() {
           <div className="space-y-3">
             {faqs.map((f) => (
               <details key={f.q} className="group rounded-xl border border-border bg-card p-5 open:border-primary/40">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-lg">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-lg text-card-foreground">
                   {f.q}
                   <ChevronDown className="h-4 w-4 text-primary transition group-open:rotate-180" />
                 </summary>
