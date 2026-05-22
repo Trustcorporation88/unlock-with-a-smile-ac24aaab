@@ -65,16 +65,35 @@ function ProceduresPage() {
 
       <section className="mx-auto max-w-7xl px-4 py-14 md:px-8">
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {list.map((p) => (
-            <article key={p.name} className="group flex flex-col rounded-2xl border border-border bg-card p-7 transition hover:border-primary/40">
-              <p className="text-xs uppercase tracking-[0.2em] text-primary">{p.category}</p>
-              <h3 className="mt-2 font-serif text-2xl">{p.name}</h3>
-              <p className="mt-3 flex-1 text-sm text-muted-foreground">{p.desc}</p>
-              <Link to="/agendamento" className="mt-5 inline-flex items-center gap-1 text-sm text-primary opacity-0 transition group-hover:opacity-100">
-                Agendar avaliação <ArrowRight className="h-4 w-4" />
+          {list.map((p) => {
+            const slug =
+              p.category === "Pediátrica" || p.category === "MOBE"
+                ? p.category === "MOBE"
+                  ? "otoplastia-modelagem"
+                  : p.name.toLowerCase().includes("otoplastia")
+                    ? "otoplastia-modelagem"
+                    : "cirurgia-pediatrica"
+                : p.category === "Anomalias Vasculares"
+                  ? "anomalias-vasculares"
+                  : p.category === "Reparadora"
+                    ? "reparadora"
+                    : "estetica";
+            return (
+              <Link
+                key={p.name}
+                to="/procedimentos/$slug"
+                params={{ slug }}
+                className="group flex flex-col rounded-2xl border border-border bg-card p-7 transition hover:border-primary/40"
+              >
+                <p className="text-xs uppercase tracking-[0.2em] text-primary">{p.category}</p>
+                <h3 className="mt-2 font-serif text-2xl text-card-foreground">{p.name}</h3>
+                <p className="mt-3 flex-1 text-sm text-muted-foreground">{p.desc}</p>
+                <span className="mt-5 inline-flex items-center gap-1 text-sm text-primary">
+                  Saiba mais <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                </span>
               </Link>
-            </article>
-          ))}
+            );
+          })}
         </div>
       </section>
 
