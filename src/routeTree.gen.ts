@@ -17,6 +17,7 @@ import { Route as ContatoRouteImport } from './routes/contato'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as AgendamentoRouteImport } from './routes/agendamento'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProcedimentosSlugRouteImport } from './routes/procedimentos.$slug'
 
 const SobreRoute = SobreRouteImport.update({
   id: '/sobre',
@@ -58,6 +59,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProcedimentosSlugRoute = ProcedimentosSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ProcedimentosRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -66,8 +72,9 @@ export interface FileRoutesByFullPath {
   '/contato': typeof ContatoRoute
   '/faq': typeof FaqRoute
   '/galeria': typeof GaleriaRoute
-  '/procedimentos': typeof ProcedimentosRoute
+  '/procedimentos': typeof ProcedimentosRouteWithChildren
   '/sobre': typeof SobreRoute
+  '/procedimentos/$slug': typeof ProcedimentosSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -76,8 +83,9 @@ export interface FileRoutesByTo {
   '/contato': typeof ContatoRoute
   '/faq': typeof FaqRoute
   '/galeria': typeof GaleriaRoute
-  '/procedimentos': typeof ProcedimentosRoute
+  '/procedimentos': typeof ProcedimentosRouteWithChildren
   '/sobre': typeof SobreRoute
+  '/procedimentos/$slug': typeof ProcedimentosSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -87,8 +95,9 @@ export interface FileRoutesById {
   '/contato': typeof ContatoRoute
   '/faq': typeof FaqRoute
   '/galeria': typeof GaleriaRoute
-  '/procedimentos': typeof ProcedimentosRoute
+  '/procedimentos': typeof ProcedimentosRouteWithChildren
   '/sobre': typeof SobreRoute
+  '/procedimentos/$slug': typeof ProcedimentosSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +110,7 @@ export interface FileRouteTypes {
     | '/galeria'
     | '/procedimentos'
     | '/sobre'
+    | '/procedimentos/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/galeria'
     | '/procedimentos'
     | '/sobre'
+    | '/procedimentos/$slug'
   id:
     | '__root__'
     | '/'
@@ -121,6 +132,7 @@ export interface FileRouteTypes {
     | '/galeria'
     | '/procedimentos'
     | '/sobre'
+    | '/procedimentos/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -130,7 +142,7 @@ export interface RootRouteChildren {
   ContatoRoute: typeof ContatoRoute
   FaqRoute: typeof FaqRoute
   GaleriaRoute: typeof GaleriaRoute
-  ProcedimentosRoute: typeof ProcedimentosRoute
+  ProcedimentosRoute: typeof ProcedimentosRouteWithChildren
   SobreRoute: typeof SobreRoute
 }
 
@@ -192,8 +204,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/procedimentos/$slug': {
+      id: '/procedimentos/$slug'
+      path: '/$slug'
+      fullPath: '/procedimentos/$slug'
+      preLoaderRoute: typeof ProcedimentosSlugRouteImport
+      parentRoute: typeof ProcedimentosRoute
+    }
   }
 }
+
+interface ProcedimentosRouteChildren {
+  ProcedimentosSlugRoute: typeof ProcedimentosSlugRoute
+}
+
+const ProcedimentosRouteChildren: ProcedimentosRouteChildren = {
+  ProcedimentosSlugRoute: ProcedimentosSlugRoute,
+}
+
+const ProcedimentosRouteWithChildren = ProcedimentosRoute._addFileChildren(
+  ProcedimentosRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -202,7 +233,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContatoRoute: ContatoRoute,
   FaqRoute: FaqRoute,
   GaleriaRoute: GaleriaRoute,
-  ProcedimentosRoute: ProcedimentosRoute,
+  ProcedimentosRoute: ProcedimentosRouteWithChildren,
   SobreRoute: SobreRoute,
 }
 export const routeTree = rootRouteImport
