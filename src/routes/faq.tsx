@@ -27,13 +27,13 @@ function FaqPage() {
   return (
     <>
       <section className="bg-radial-glow">
-        <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
+        <div className="mx-auto max-w-7xl px-4 py-14 md:px-8 md:py-28">
           <p className="text-xs uppercase tracking-[0.3em] text-primary">Dúvidas Frequentes</p>
           <h1 className="mt-3 max-w-3xl font-serif text-5xl md:text-6xl">Perguntas que nossos <em className="text-primary">pacientes</em> nos fazem</h1>
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-4 py-20 md:px-8">
+      <section className="mx-auto max-w-3xl px-4 py-14 md:px-8">
         <div className="space-y-3">
           {faqs.map((f) => (
             <details key={f.q} className="group rounded-xl border border-white/10 bg-card p-5 open:border-primary/40">

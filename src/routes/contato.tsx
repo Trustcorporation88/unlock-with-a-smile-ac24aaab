@@ -34,7 +34,7 @@ function ContatoPage() {
   return (
     <>
       <section className="bg-radial-glow">
-        <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
+        <div className="mx-auto max-w-7xl px-4 py-14 md:px-8 md:py-28">
           <p className="text-xs uppercase tracking-[0.3em] text-primary">Contato</p>
           <h1 className="mt-3 max-w-3xl font-serif text-5xl md:text-6xl">Entre em <em className="text-primary">Contato</em></h1>
           <p className="mt-5 max-w-2xl text-muted-foreground">
@@ -43,7 +43,7 @@ function ContatoPage() {
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-20 md:grid-cols-2 md:px-8">
+      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-2 md:px-8">
         <div className="space-y-5">
           <h2 className="font-serif text-3xl">Informações de Contato</h2>
           {[
