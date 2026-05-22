@@ -8,7 +8,7 @@ export function SiteFooter() {
         <div className="md:col-span-2">
           <h3 className="font-serif text-2xl">Dra. Rebecca Rossener</h3>
           <p className="mt-1 text-xs uppercase tracking-[0.25em] text-muted-foreground">
-            Cirurgia Plástica · CRM-SP 000.000
+            Cirurgia Plástica · CRM-SP 176.098 · RQE 111.228
           </p>
           <p className="mt-6 max-w-md text-sm text-muted-foreground">
             Cirurgia plástica estética, reparadora e pediátrica com excelência técnica e
@@ -40,9 +40,9 @@ export function SiteFooter() {
         <div>
           <h4 className="font-serif text-base">Contato</h4>
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-            <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />Av. Paulista, 1000 — Cj. 101, Bela Vista, São Paulo — SP</li>
-            <li className="flex gap-2"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href="https://wa.me/5511999999999" className="hover:text-primary">(11) 99999-9999</a></li>
-            <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href="mailto:contato@drarebeccarossener.com.br" className="hover:text-primary">contato@drarebeccarossener.com.br</a></li>
+            <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />Rua Dr. Alceu de Campos Rodrigues, 46, Cj. 67 — Vila Nova Conceição, São Paulo — SP</li>
+            <li className="flex gap-2"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href="https://wa.me/5511999720066" className="hover:text-primary">(11) 99972-0066</a></li>
+            <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href="mailto:moparabebes@gmail.com" className="hover:text-primary">moparabebes@gmail.com</a></li>
           </ul>
         </div>
       </div>

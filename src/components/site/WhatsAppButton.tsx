@@ -1,6 +1,6 @@
 export function WhatsAppButton() {
   const href =
-    "https://wa.me/5511999999999?text=" +
+    "https://wa.me/5511999720066?text=" +
     encodeURIComponent("Olá! Gostaria de agendar uma consulta com a Dra. Rebecca Rossener.");
   return (
     <a
