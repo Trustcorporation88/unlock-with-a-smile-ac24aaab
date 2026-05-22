@@ -34,40 +34,45 @@
   --color-ring-offset-background: var(--background);
   --color-surface: var(--surface);
   --color-surface-foreground: var(--surface-foreground);
-  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Noto Serif", ui-serif, Georgia, serif;
+  --font-sans: "Onest", ui-sans-serif, system-ui, sans-serif;
 }
 
 :root {
   --radius: 0.75rem;
-  /* Deep navy palette */
-  --background: oklch(0.24 0.035 255);
-  --foreground: oklch(0.96 0.01 80);
-  --surface: oklch(0.28 0.04 255);
-  --surface-foreground: oklch(0.96 0.01 80);
-  --card: oklch(0.28 0.04 255);
-  --card-foreground: oklch(0.96 0.01 80);
-  --popover: oklch(0.28 0.04 255);
-  --popover-foreground: oklch(0.96 0.01 80);
-  /* Warm copper-orange accent */
-  --primary: oklch(0.68 0.16 47);
-  --primary-foreground: oklch(0.16 0.02 255);
-  --secondary: oklch(0.32 0.04 255);
-  --secondary-foreground: oklch(0.96 0.01 80);
-  --muted: oklch(0.32 0.04 255);
-  --muted-foreground: oklch(0.78 0.02 80);
-  --accent: oklch(0.68 0.16 47);
-  --accent-foreground: oklch(0.16 0.02 255);
-  --destructive: oklch(0.6 0.22 25);
-  --destructive-foreground: oklch(0.98 0.01 80);
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 14%);
-  --ring: oklch(0.68 0.16 47);
+  /* Brand palette — exact hex from brand guidelines */
+  --brand-navy: #2b3854;
+  --brand-blue: #617fba;
+  --brand-cream: #dfddd9;
+  --brand-orange: #b85114;
+  --brand-brown: #563f36;
+
+  --background: #2b3854;
+  --foreground: #dfddd9;
+  --surface: #324264;
+  --surface-foreground: #dfddd9;
+  --card: #324264;
+  --card-foreground: #dfddd9;
+  --popover: #324264;
+  --popover-foreground: #dfddd9;
+  --primary: #b85114;
+  --primary-foreground: #ffffff;
+  --secondary: #617fba;
+  --secondary-foreground: #ffffff;
+  --muted: #324264;
+  --muted-foreground: #b8bcc7;
+  --accent: #617fba;
+  --accent-foreground: #ffffff;
+  --destructive: #c0392b;
+  --destructive-foreground: #ffffff;
+  --border: rgba(223, 221, 217, 0.14);
+  --input: rgba(223, 221, 217, 0.16);
+  --ring: #b85114;
 }
 
 .dark {
-  --background: oklch(0.24 0.035 255);
-  --foreground: oklch(0.96 0.01 80);
+  --background: #2b3854;
+  --foreground: #dfddd9;
 }
 
 @layer base {
