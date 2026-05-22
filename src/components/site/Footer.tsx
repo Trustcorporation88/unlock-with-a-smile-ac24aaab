@@ -3,7 +3,7 @@ import { Instagram, Mail, MapPin, Phone } from "lucide-react";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-white/10 bg-background">
+    <footer className="border-t border-border bg-background">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 md:grid-cols-4 md:px-8">
         <div className="md:col-span-2">
           <h3 className="font-serif text-2xl">Dra. Rebecca Rossener</h3>
@@ -20,7 +20,7 @@ export function SiteFooter() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram @drarebeccarossener"
-              className="grid h-10 w-10 place-items-center rounded-full border border-white/15 text-foreground/80 transition hover:border-primary hover:text-primary"
+              className="grid h-10 w-10 place-items-center rounded-full border border-border text-foreground/80 transition hover:border-primary hover:text-primary"
             >
               <Instagram className="h-4 w-4" />
             </a>
@@ -48,7 +48,7 @@ export function SiteFooter() {
           </ul>
         </div>
       </div>
-      <div className="border-t border-white/10">
+      <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-2 px-4 py-6 text-xs text-muted-foreground md:flex-row md:items-center md:px-8">
           <p>© {new Date().getFullYear()} Dra. Rebecca Rossener. Todos os direitos reservados.</p>
           <p>

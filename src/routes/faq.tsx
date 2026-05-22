@@ -36,7 +36,7 @@ function FaqPage() {
       <section className="mx-auto max-w-3xl px-4 py-14 md:px-8">
         <div className="space-y-3">
           {faqs.map((f) => (
-            <details key={f.q} className="group rounded-xl border border-white/10 bg-card p-5 open:border-primary/40">
+            <details key={f.q} className="group rounded-xl border border-border bg-card p-5 open:border-primary/40">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-lg">
                 {f.q}
                 <ChevronDown className="h-4 w-4 text-primary transition group-open:rotate-180" />

@@ -51,7 +51,7 @@ function HomePage() {
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-primary">
               <Award className="h-3.5 w-3.5" /> Formada pela USP · Membro SBCP
             </span>
-            <h1 className="mt-5 text-balance font-serif text-5xl leading-[1.05] md:text-6xl lg:text-7xl">
+            <h1 className="mt-5 text-balance font-serif text-4xl leading-[1.1] md:text-5xl lg:text-6xl">
               Cirurgia Plástica com <em className="not-italic text-primary"><span className="italic">Excelência</span></em> e Cuidado Humano
             </h1>
             <p className="mt-5 max-w-xl text-pretty text-base text-muted-foreground md:text-lg">
@@ -62,7 +62,7 @@ function HomePage() {
               <Button asChild size="lg" className="rounded-full px-6">
                 <Link to="/agendamento">Agendar Consulta <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full border-white/20 bg-transparent px-6 text-foreground hover:bg-white/5">
+              <Button asChild size="lg" variant="outline" className="rounded-full border-border bg-transparent px-6 text-foreground hover:bg-muted/60">
                 <Link to="/procedimentos">Ver Procedimentos</Link>
               </Button>
             </div>
@@ -79,7 +79,7 @@ function HomePage() {
               <p className="font-serif text-base">USP São Paulo</p>
             </div>
             <Medallion className="h-full w-full" />
-            <div className="absolute -bottom-4 -right-2 rounded-2xl bg-card px-5 py-3 text-xs shadow-xl ring-1 ring-white/10">
+            <div className="absolute -bottom-4 -right-2 rounded-2xl bg-card px-5 py-3 text-xs shadow-xl ring-1 ring-border">
               <p className="text-muted-foreground">Especialidades</p>
               <p className="font-serif text-base">Reparadora · Pediátrica</p>
             </div>
@@ -93,7 +93,7 @@ function HomePage() {
       </section>
 
       {/* SOBRE TEASER */}
-      <section id="sobre" className="border-y border-white/5 bg-surface/50">
+      <section id="sobre" className="border-y border-border bg-surface/50">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 md:grid-cols-5 md:px-8">
           <div className="md:col-span-2">
             <p className="text-xs uppercase tracking-[0.3em] text-primary">Sobre a Médica</p>
@@ -119,6 +119,60 @@ function HomePage() {
         </div>
       </section>
 
+      {/* MOBE — Modelagem de Orelha em Bebês */}
+      <section className="relative overflow-hidden">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 md:grid-cols-2 md:px-8 md:py-24">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-secondary">
+              <Heart className="h-3.5 w-3.5" /> MOBE · Diferencial
+            </span>
+            <h2 className="mt-5 font-serif text-4xl leading-tight md:text-5xl">
+              Modelagem de Orelha em <em className="text-primary">Bebês</em>, sem cirurgia
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              Técnica indolor e não-cirúrgica para correção de deformidades da orelha em recém-nascidos,
+              utilizando moldes especiais aplicados nas primeiras semanas de vida. Quanto mais cedo iniciado
+              (idealmente até 3 semanas), melhores os resultados — evitando a otoplastia cirúrgica no futuro.
+            </p>
+            <ul className="mt-6 space-y-3 text-sm">
+              <li className="flex gap-3"><Sparkles className="h-4 w-4 shrink-0 text-primary" /> Sem dor, sem anestesia, sem incisões.</li>
+              <li className="flex gap-3"><Sparkles className="h-4 w-4 shrink-0 text-primary" /> Ideal entre 1 e 6 semanas de vida.</li>
+              <li className="flex gap-3"><Sparkles className="h-4 w-4 shrink-0 text-primary" /> Corrige orelhas em abano, dobradas, em copo, lop e Stahl.</li>
+              <li className="flex gap-3"><Sparkles className="h-4 w-4 shrink-0 text-primary" /> Acompanhamento próximo ao longo do tratamento.</li>
+            </ul>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild size="lg" className="rounded-full px-6">
+                <Link to="/contato">Falar sobre MOBE</Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="rounded-full border-border bg-transparent">
+                <Link to="/procedimentos">Saiba mais</Link>
+              </Button>
+            </div>
+          </div>
+          <div className="relative">
+            <div className="rounded-3xl bg-gradient-to-br from-secondary/15 via-primary/10 to-transparent p-8 ring-1 ring-border">
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { n: "1–3", t: "semanas", d: "Janela ideal de início" },
+                  { n: "0", t: "cirurgia", d: "Tratamento não invasivo" },
+                  { n: "4–6", t: "semanas", d: "Duração média do tratamento" },
+                  { n: "90%+", t: "eficácia", d: "Quando iniciado precocemente" },
+                ].map((s) => (
+                  <div key={s.t} className="rounded-2xl bg-card p-5 ring-1 ring-border">
+                    <p className="font-serif text-3xl text-primary">{s.n}</p>
+                    <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{s.t}</p>
+                    <p className="mt-2 text-xs text-muted-foreground">{s.d}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-6 text-center text-xs text-muted-foreground">
+                Pais e pediatras: se notarem alteração no formato da orelha do bebê, procurem avaliação o quanto antes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ESPECIALIDADES */}
       <section className="mx-auto max-w-7xl px-4 py-16 md:px-8">
         <div className="mx-auto max-w-2xl text-center">
@@ -133,7 +187,7 @@ function HomePage() {
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {specialties.map((s) => (
-            <div key={s.title} className="group relative overflow-hidden rounded-2xl border border-white/10 bg-card p-6 transition hover:border-primary/40">
+            <div key={s.title} className="group relative overflow-hidden rounded-2xl border border-border bg-card p-6 transition hover:border-primary/40">
               <div className="absolute inset-x-0 -top-1 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 transition group-hover:opacity-100" />
               <s.icon className="h-7 w-7 text-primary" />
               <h3 className="mt-4 font-serif text-xl">{s.title}</h3>
@@ -142,14 +196,14 @@ function HomePage() {
           ))}
         </div>
         <div className="mt-10 text-center">
-          <Button asChild variant="outline" className="rounded-full border-white/20 bg-transparent hover:bg-white/5">
+          <Button asChild variant="outline" className="rounded-full border-border bg-transparent hover:bg-muted/60">
             <Link to="/procedimentos">Ver todos os procedimentos <ArrowRight className="ml-2 h-4 w-4" /></Link>
           </Button>
         </div>
       </section>
 
       {/* JORNADA */}
-      <section className="border-y border-white/5 bg-surface/40">
+      <section className="border-y border-border bg-surface/40">
         <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-xs uppercase tracking-[0.3em] text-primary">Sua Jornada</p>
@@ -162,7 +216,7 @@ function HomePage() {
           </div>
           <ol className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-5">
             {journey.map((step) => (
-              <li key={step.n} className="relative rounded-2xl border border-white/10 bg-card p-6">
+              <li key={step.n} className="relative rounded-2xl border border-border bg-card p-6">
                 <span className="font-serif text-3xl text-primary">{step.n}</span>
                 <h3 className="mt-2 font-serif text-lg">{step.t}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{step.d}</p>
@@ -191,7 +245,7 @@ function HomePage() {
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-3">
           {testimonials.map((t, i) => (
-            <figure key={i} className="rounded-2xl border border-white/10 bg-card p-7">
+            <figure key={i} className="rounded-2xl border border-border bg-card p-7">
               <Quote className="h-6 w-6 text-primary" />
               <blockquote className="mt-4 font-serif text-lg leading-snug text-foreground/90">
                 "{t.text}"
@@ -205,7 +259,7 @@ function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="border-y border-white/5 bg-surface/40">
+      <section className="border-y border-border bg-surface/40">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 md:grid-cols-2 md:px-8">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-primary">Dúvidas Frequentes</p>
@@ -221,7 +275,7 @@ function HomePage() {
           </div>
           <div className="space-y-3">
             {faqs.map((f) => (
-              <details key={f.q} className="group rounded-xl border border-white/10 bg-card p-5 open:border-primary/40">
+              <details key={f.q} className="group rounded-xl border border-border bg-card p-5 open:border-primary/40">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-lg">
                   {f.q}
                   <ChevronDown className="h-4 w-4 text-primary transition group-open:rotate-180" />
@@ -246,7 +300,7 @@ function HomePage() {
           <Button asChild size="lg" className="rounded-full px-6">
             <Link to="/agendamento">Agendar Consulta</Link>
           </Button>
-          <Button asChild size="lg" variant="outline" className="rounded-full border-white/20 bg-transparent px-6 hover:bg-white/5">
+          <Button asChild size="lg" variant="outline" className="rounded-full border-border bg-transparent px-6 hover:bg-muted/60">
             <Link to="/contato">Fale Conosco</Link>
           </Button>
         </div>

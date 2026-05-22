@@ -36,7 +36,7 @@ function BlogPage() {
       <section className="mx-auto max-w-7xl px-4 py-14 md:px-8">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((p) => (
-            <article key={p.slug} className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-card transition hover:border-primary/40">
+            <article key={p.slug} className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition hover:border-primary/40">
               <div className="relative aspect-[5/3] overflow-hidden bg-gradient-to-br from-primary/30 via-surface to-background">
                 <div className="absolute inset-0 grid place-items-center font-serif text-5xl text-foreground/15 transition group-hover:scale-105">
                   R.R.

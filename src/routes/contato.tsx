@@ -52,7 +52,7 @@ function ContatoPage() {
             { icon: Mail, t: "E-mail", lines: ["moparabebes@gmail.com"] },
             { icon: Clock, t: "Horário de Atendimento", lines: ["Segunda a Sexta: 8h às 18h", "Sábado: 8h às 13h"] },
           ].map((it) => (
-            <div key={it.t} className="flex gap-4 rounded-2xl border border-white/10 bg-card p-5">
+            <div key={it.t} className="flex gap-4 rounded-2xl border border-border bg-card p-5">
               <it.icon className="mt-1 h-5 w-5 shrink-0 text-primary" />
               <div>
                 <p className="text-xs uppercase tracking-[0.25em] text-primary">{it.t}</p>
@@ -67,7 +67,7 @@ function ContatoPage() {
           </Button>
         </div>
 
-        <form onSubmit={onSubmit} className="space-y-5 rounded-2xl border border-white/10 bg-card p-7">
+        <form onSubmit={onSubmit} className="space-y-5 rounded-2xl border border-border bg-card p-7">
           <h2 className="font-serif text-3xl">Envie uma mensagem</h2>
           <div className="space-y-2">
             <Label htmlFor="nome">Nome *</Label>
