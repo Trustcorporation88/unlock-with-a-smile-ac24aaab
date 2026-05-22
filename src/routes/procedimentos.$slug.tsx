@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, ArrowLeft, Check, Sparkles, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { getCategoryBySlug, categories } from "@/lib/procedures";
+import { getCategoryBySlug, categories, type ProcedureCategory } from "@/lib/procedures";
 
 export const Route = createFileRoute("/procedimentos/$slug")({
   loader: ({ params }) => {
