@@ -13,25 +13,23 @@ export const Route = createFileRoute("/procedimentos")({
   }),
 });
 
-type Category = "Todos" | "Facial" | "Corporal" | "Pediátrica" | "Anomalias Vasculares" | "Não-Cirúrgico";
-const categories: Category[] = ["Todos", "Facial", "Corporal", "Pediátrica", "Anomalias Vasculares", "Não-Cirúrgico"];
+type Category = "Todos" | "Pediátrica" | "Anomalias Vasculares" | "Reparadora" | "Estética" | "MOBE";
+const categories: Category[] = ["Todos", "Pediátrica", "Anomalias Vasculares", "Reparadora", "Estética", "MOBE"];
 
 const procedures: { name: string; category: Exclude<Category, "Todos">; desc: string }[] = [
-  { name: "Rinoplastia", category: "Facial", desc: "Cirurgia do nariz para harmonização estética e/ou funcional, com resultado natural." },
-  { name: "Blefaroplastia", category: "Facial", desc: "Cirurgia das pálpebras para rejuvenescimento do olhar." },
-  { name: "Lifting Facial", category: "Facial", desc: "Reposicionamento dos tecidos do rosto e pescoço para um resultado natural e duradouro." },
-  { name: "Otoplastia", category: "Facial", desc: "Correção cirúrgica de orelhas em abano." },
-  { name: "Mamoplastia de Aumento", category: "Corporal", desc: "Aumento das mamas com próteses de alta qualidade e planejamento individualizado." },
-  { name: "Mamoplastia Redutora", category: "Corporal", desc: "Redução das mamas com melhora postural e estética." },
-  { name: "Mastopexia", category: "Corporal", desc: "Levantamento das mamas com ou sem prótese." },
-  { name: "Abdominoplastia", category: "Corporal", desc: "Remodelagem do abdômen com remoção de pele e correção da musculatura." },
-  { name: "Lipoaspiração", category: "Corporal", desc: "Contorno corporal com remoção localizada de gordura." },
-  { name: "Cirurgia Pediátrica Reparadora", category: "Pediátrica", desc: "Procedimentos reparadores em crianças com técnica e cuidado especializado." },
-  { name: "Correção de Orelhas em Crianças", category: "Pediátrica", desc: "Otoplastia infantil realizada com técnica delicada e segura." },
-  { name: "Hemangiomas", category: "Anomalias Vasculares", desc: "Avaliação e tratamento cirúrgico de hemangiomas, com abordagem individualizada." },
-  { name: "Malformações Vasculares", category: "Anomalias Vasculares", desc: "Tratamento cirúrgico de malformações vasculares em adultos e crianças." },
-  { name: "Toxina Botulínica", category: "Não-Cirúrgico", desc: "Aplicação para suavização de rugas dinâmicas e harmonização facial." },
-  { name: "Preenchimentos", category: "Não-Cirúrgico", desc: "Preenchimento com ácido hialurônico para áreas estratégicas do rosto." },
+  { name: "MOBE — Modelagem de Orelha em Bebês", category: "MOBE", desc: "Correção não-cirúrgica de deformidades da orelha em recém-nascidos com moldes especiais, idealmente iniciada entre 1 e 6 semanas de vida. Evita a otoplastia futura." },
+  { name: "Otoplastia (Orelha em Abano)", category: "Pediátrica", desc: "Correção cirúrgica de orelhas em abano em crianças e adultos, com técnica delicada e cicatrizes discretas atrás da orelha." },
+  { name: "Cirurgia Pediátrica Reparadora", category: "Pediátrica", desc: "Procedimentos reparadores em bebês e crianças realizados com técnica precisa, cuidado humanizado e equipe pediátrica especializada." },
+  { name: "Hemangiomas Infantis", category: "Anomalias Vasculares", desc: "Avaliação e tratamento de hemangiomas em bebês e crianças, com seguimento clínico e cirúrgico quando indicado." },
+  { name: "Malformações Vasculares", category: "Anomalias Vasculares", desc: "Abordagem multidisciplinar de malformações vasculares — venosas, linfáticas e capilares — em crianças e adultos." },
+  { name: "Reconstrução de Cicatrizes", category: "Reparadora", desc: "Tratamento de cicatrizes hipertróficas, queloides e sequelas pós-traumáticas, com técnicas avançadas de revisão cicatricial." },
+  { name: "Cirurgia Pós-Trauma", category: "Reparadora", desc: "Reparação de defeitos faciais e corporais após acidentes, mordeduras ou ressecções oncológicas." },
+  { name: "Reconstrução Mamária", category: "Reparadora", desc: "Reconstrução mamária pós-mastectomia com técnicas modernas e planejamento individualizado." },
+  { name: "Rinoplastia", category: "Estética", desc: "Cirurgia do nariz para harmonização estética e/ou funcional, com resultado natural e respeito à anatomia." },
+  { name: "Blefaroplastia", category: "Estética", desc: "Cirurgia das pálpebras para rejuvenescimento do olhar, removendo excesso de pele e bolsas." },
+  { name: "Mamoplastia", category: "Estética", desc: "Aumento, redução ou levantamento das mamas com planejamento personalizado e implantes de alta qualidade." },
+  { name: "Abdominoplastia", category: "Estética", desc: "Remodelagem do abdômen com remoção de pele e correção da musculatura — comum no pós-gestação." },
+  { name: "Lipoaspiração", category: "Estética", desc: "Contorno corporal com remoção localizada de gordura, com técnicas modernas e recuperação otimizada." },
 ];
 
 function ProceduresPage() {
