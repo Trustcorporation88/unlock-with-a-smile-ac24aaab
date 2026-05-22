@@ -47,26 +47,26 @@
   --brand-orange: #b85114;
   --brand-brown: #563f36;
 
-  --background: #2b3854;
-  --foreground: #dfddd9;
-  --surface: #324264;
-  --surface-foreground: #dfddd9;
-  --card: #324264;
-  --card-foreground: #dfddd9;
-  --popover: #324264;
-  --popover-foreground: #dfddd9;
+  --background: #f5f3ee;
+  --foreground: #2b3854;
+  --surface: #ffffff;
+  --surface-foreground: #2b3854;
+  --card: #ffffff;
+  --card-foreground: #2b3854;
+  --popover: #ffffff;
+  --popover-foreground: #2b3854;
   --primary: #b85114;
   --primary-foreground: #ffffff;
   --secondary: #617fba;
   --secondary-foreground: #ffffff;
-  --muted: #324264;
-  --muted-foreground: #b8bcc7;
-  --accent: #617fba;
-  --accent-foreground: #ffffff;
+  --muted: #efece6;
+  --muted-foreground: #6b6f7a;
+  --accent: #dfddd9;
+  --accent-foreground: #2b3854;
   --destructive: #c0392b;
   --destructive-foreground: #ffffff;
-  --border: rgba(223, 221, 217, 0.14);
-  --input: rgba(223, 221, 217, 0.16);
+  --border: rgba(43, 56, 84, 0.12);
+  --input: rgba(43, 56, 84, 0.16);
   --ring: #b85114;
 }
 
