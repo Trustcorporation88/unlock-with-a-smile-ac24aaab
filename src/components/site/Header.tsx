@@ -2,6 +2,8 @@ import { Link } from "@tanstack/react-router";
 import { Menu, Phone, X } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
+
 
 const nav = [
   { to: "/", label: "Início" },
@@ -15,18 +17,12 @@ const nav = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 border-b border-white/5 bg-background/70 backdrop-blur-xl">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 md:px-8">
+    <header className="sticky top-0 z-40 border-b border-white/5 bg-background/80 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <span className="grid h-10 w-10 place-items-center rounded-full border border-primary/40 text-primary">
-            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M12 3c2 4 2 8 0 12-2-4-2-8 0-12Z" />
-              <path d="M5 10c3 1 5 4 5 8-4 0-7-3-7-7l2-1Z" />
-              <path d="M19 10c-3 1-5 4-5 8 4 0 7-3 7-7l-2-1Z" />
-            </svg>
-          </span>
+          <img src={logo} alt="Dra. Rebecca Rossener" className="h-12 w-12 rounded-full object-contain" />
           <span className="leading-tight">
-            <span className="block font-serif text-lg text-foreground">Dra. Rebecca Rossener</span>
+            <span className="block font-serif text-base text-foreground">Dra. Rebecca Rossener</span>
             <span className="block text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
               Cirurgia Plástica
             </span>
