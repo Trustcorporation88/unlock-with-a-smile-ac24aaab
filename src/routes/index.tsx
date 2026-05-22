@@ -73,17 +73,18 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="relative mx-auto aspect-square w-full max-w-[520px]">
-            <div className="absolute -left-4 -top-4 rounded-2xl bg-primary px-5 py-3 text-xs text-primary-foreground shadow-xl">
-              <p className="opacity-80">Formação</p>
-              <p className="font-serif text-base">USP São Paulo</p>
-            </div>
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-[440px]">
             <Medallion className="h-full w-full" />
-            <div className="absolute -bottom-4 -right-2 rounded-2xl bg-card px-5 py-3 text-xs shadow-xl ring-1 ring-border">
+            <div className="absolute -left-3 top-6 rounded-2xl bg-primary px-4 py-2.5 text-xs text-primary-foreground shadow-xl md:-left-6">
+              <p className="opacity-80">Formação</p>
+              <p className="font-serif text-sm">USP São Paulo</p>
+            </div>
+            <div className="absolute -bottom-4 right-2 rounded-2xl bg-card px-4 py-2.5 text-xs shadow-xl ring-1 ring-border md:-right-6">
               <p className="text-muted-foreground">Especialidades</p>
-              <p className="font-serif text-base">Reparadora · Pediátrica</p>
+              <p className="font-serif text-sm">Reparadora · Pediátrica</p>
             </div>
           </div>
+
         </div>
         <div className="flex justify-center pb-10 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
           <a href="#sobre" className="flex flex-col items-center gap-2 hover:text-primary">
