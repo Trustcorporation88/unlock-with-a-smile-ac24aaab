@@ -60,7 +60,7 @@
   --secondary: #617fba;
   --secondary-foreground: #ffffff;
   --muted: #efece6;
-  --muted-foreground: #6b6f7a;
+  --muted-foreground: #475067;
   --accent: #dfddd9;
   --accent-foreground: #2b3854;
   --destructive: #c0392b;
@@ -72,7 +72,13 @@
 
 .dark {
   --background: #2b3854;
-  --foreground: #dfddd9;
+  --foreground: #f3f1ec;
+  --muted-foreground: #cdd3e0;
+  --card: #38456a;
+  --card-foreground: #f3f1ec;
+  --surface: #38456a;
+  --surface-foreground: #f3f1ec;
+  --border: rgba(243, 241, 236, 0.16);
 }
 
 @layer base {
