@@ -13,7 +13,7 @@ export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
       { title: "Contato — Dra. Rebecca Rossener" },
-      { name: "description", content: "Entre em contato para tirar dúvidas ou agendar sua consulta. Atendimento na Av. Paulista, São Paulo." },
+      { name: "description", content: "Entre em contato para tirar dúvidas ou agendar sua consulta. Atendimento em São Paulo." },
     ],
   }),
 });
@@ -47,9 +47,9 @@ function ContatoPage() {
         <div className="space-y-5">
           <h2 className="font-serif text-3xl">Informações de Contato</h2>
           {[
-            { icon: MapPin, t: "Endereço", lines: ["Rua Dr. Alceu de Campos Rodrigues, 46 — Cj. 67", "Vila Nova Conceição, São Paulo — SP", "CEP 04544-000"] },
-            { icon: Phone, t: "Telefone / WhatsApp", lines: ["(11) 99972-0066"] },
-            { icon: Mail, t: "E-mail", lines: ["moparabebes@gmail.com"] },
+            { icon: MapPin, t: "Endereço", lines: ["Av. Fictícia, 123 — Sala 45", "Bairro Exemplo, São Paulo — SP", "CEP 00000-000"] },
+            { icon: Phone, t: "Telefone / WhatsApp", lines: ["(11) 99999-9999"] },
+            { icon: Mail, t: "E-mail", lines: ["contato@exemplo.com.br"] },
             { icon: Clock, t: "Horário de Atendimento", lines: ["Segunda a Sexta: 8h às 18h", "Sábado: 8h às 13h"] },
           ].map((it) => (
             <div key={it.t} className="flex gap-4 rounded-2xl border border-border bg-card p-5">
@@ -61,7 +61,7 @@ function ContatoPage() {
             </div>
           ))}
           <Button asChild size="lg" className="w-full rounded-full bg-[#25D366] text-white hover:bg-[#1ebd5a]">
-            <a href="https://wa.me/5511999720066?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Rebecca%20Rossener." target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/55119999999999?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Rebecca%20Rossener." target="_blank" rel="noopener noreferrer">
               Falar pelo WhatsApp
             </a>
           </Button>

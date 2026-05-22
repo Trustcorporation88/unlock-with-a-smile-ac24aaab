@@ -16,10 +16,10 @@ export function SiteFooter() {
           </p>
           <div className="mt-6 flex gap-3">
             <a
-              href="https://www.instagram.com/drarebeccarossener"
+              href="https://www.instagram.com/drarebecca.plastica"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Instagram @drarebeccarossener"
+              aria-label="Instagram @drarebecca.plastica"
               className="grid h-10 w-10 place-items-center rounded-full border border-border text-foreground/80 transition hover:border-primary hover:text-primary"
             >
               <Instagram className="h-4 w-4" />
@@ -42,9 +42,9 @@ export function SiteFooter() {
         <div>
           <h4 className="font-serif text-base">Contato</h4>
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-            <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />Rua Dr. Alceu de Campos Rodrigues, 46, Cj. 67 — Vila Nova Conceição, São Paulo — SP</li>
-            <li className="flex gap-2"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href="https://wa.me/5511999720066" className="hover:text-primary">(11) 99972-0066</a></li>
-            <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href="mailto:moparabebes@gmail.com" className="hover:text-primary">moparabebes@gmail.com</a></li>
+            <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />Av. Fictícia, 123, Sala 45 — Bairro Exemplo, São Paulo — SP</li>
+            <li className="flex gap-2"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href="https://wa.me/55119999999999" className="hover:text-primary">(11) 99999-9999</a></li>
+            <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href="mailto:contato@exemplo.com.br" className="hover:text-primary">contato@exemplo.com.br</a></li>
           </ul>
         </div>
       </div>
