@@ -29,7 +29,7 @@ function GaleriaPage() {
       <section className="mx-auto max-w-7xl px-4 py-14 md:px-8">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {cards.map((_, i) => (
-            <div key={i} className="group relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-surface via-background to-surface">
+            <div key={i} className="group relative aspect-[4/5] overflow-hidden rounded-2xl border border-border bg-gradient-to-br from-surface via-background to-surface">
               <div className="absolute inset-0 grid place-items-center font-serif text-2xl text-foreground/15">
                 Caso #{String(i + 1).padStart(2, "0")}
               </div>

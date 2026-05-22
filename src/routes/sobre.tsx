@@ -43,15 +43,15 @@ function SobrePage() {
               amor à medicina e pelo cuidado genuinamente humano com cada paciente.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-xs"><GraduationCap className="h-4 w-4 text-primary" /> USP — Faculdade de Medicina</span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-xs"><Award className="h-4 w-4 text-primary" /> Membro SBCP</span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-xs"><GraduationCap className="h-4 w-4 text-primary" /> USP — Faculdade de Medicina</span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-xs"><Award className="h-4 w-4 text-primary" /> Membro SBCP</span>
             </div>
           </div>
           <Medallion className="mx-auto aspect-square w-full max-w-[480px]" />
         </div>
       </section>
 
-      <section className="border-y border-white/5 bg-surface/40">
+      <section className="border-y border-border bg-surface/40">
         <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 md:grid-cols-5 md:px-8">
           <div className="md:col-span-2">
             <p className="text-xs uppercase tracking-[0.3em] text-primary">Minha História</p>
@@ -73,7 +73,7 @@ function SobrePage() {
         <h2 className="mt-3 max-w-2xl font-serif text-4xl md:text-5xl">O que guia minha <em className="text-primary">prática médica</em></h2>
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {values.map((v) => (
-            <div key={v.t} className="rounded-2xl border border-white/10 bg-card p-6">
+            <div key={v.t} className="rounded-2xl border border-border bg-card p-6">
               <Heart className="h-5 w-5 text-primary" />
               <h3 className="mt-3 font-serif text-xl">{v.t}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{v.d}</p>
@@ -82,7 +82,7 @@ function SobrePage() {
         </div>
       </section>
 
-      <section className="border-y border-white/5 bg-surface/40">
+      <section className="border-y border-border bg-surface/40">
         <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
           <p className="text-xs uppercase tracking-[0.3em] text-primary">Formação & Credenciais</p>
           <h2 className="mt-3 max-w-3xl font-serif text-4xl md:text-5xl">Trajetória <em className="text-primary">acadêmica</em> e profissional</h2>
@@ -97,14 +97,14 @@ function SobrePage() {
             ))}
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
-            <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-card p-5">
+            <div className="flex items-start gap-3 rounded-2xl border border-border bg-card p-5">
               <Award className="mt-1 h-5 w-5 text-primary" />
               <div>
                 <p className="text-xs uppercase tracking-[0.25em] text-primary">SBCP</p>
                 <p className="mt-1 font-serif text-lg">Membro Titular da Sociedade Brasileira de Cirurgia Plástica</p>
               </div>
             </div>
-            <div className="flex items-start gap-3 rounded-2xl border border-white/10 bg-card p-5">
+            <div className="flex items-start gap-3 rounded-2xl border border-border bg-card p-5">
               <Stethoscope className="mt-1 h-5 w-5 text-primary" />
               <div>
                 <p className="text-xs uppercase tracking-[0.25em] text-primary">CRM/SP</p>

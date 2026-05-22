@@ -17,7 +17,7 @@ const nav = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   return (
-    <header className="sticky top-0 z-40 border-b border-white/5 bg-background/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 md:px-8">
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
           <img src={logo} alt="Dra. Rebecca Rossener" className="h-12 w-12 rounded-full object-contain" />
@@ -60,14 +60,14 @@ export function SiteHeader() {
       </div>
 
       {open && (
-        <div className="border-t border-white/5 bg-background/95 lg:hidden">
+        <div className="border-t border-border bg-background/95 lg:hidden">
           <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-4 py-4">
             {nav.map((n) => (
               <Link
                 key={n.to}
                 to={n.to}
                 onClick={() => setOpen(false)}
-                className="rounded-md px-3 py-2 text-sm text-foreground/85 hover:bg-white/5 [&.active]:text-primary"
+                className="rounded-md px-3 py-2 text-sm text-foreground/85 hover:bg-muted/60 [&.active]:text-primary"
                 activeOptions={{ exact: n.to === "/" }}
               >
                 {n.label}

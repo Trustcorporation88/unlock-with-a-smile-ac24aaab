@@ -47,7 +47,7 @@ function AgendamentoPage() {
             { icon: Clock, t: "Duração", d: "Aproximadamente 45 a 60 minutos. Sem pressa, sem pressão." },
             { icon: MapPin, t: "Local", d: "Rua Dr. Alceu de Campos Rodrigues, 46, Cj. 67 — Vila Nova Conceição, São Paulo — SP." },
           ].map((it) => (
-            <div key={it.t} className="flex gap-4 rounded-2xl border border-white/10 bg-card p-5">
+            <div key={it.t} className="flex gap-4 rounded-2xl border border-border bg-card p-5">
               <it.icon className="mt-1 h-5 w-5 shrink-0 text-primary" />
               <div>
                 <p className="text-xs uppercase tracking-[0.25em] text-primary">{it.t}</p>
@@ -60,7 +60,7 @@ function AgendamentoPage() {
           </div>
         </aside>
 
-        <form onSubmit={onSubmit} className="space-y-5 rounded-2xl border border-white/10 bg-card p-7 md:col-span-3">
+        <form onSubmit={onSubmit} className="space-y-5 rounded-2xl border border-border bg-card p-7 md:col-span-3">
           <div className="grid gap-5 md:grid-cols-2">
             <div className="space-y-2"><Label htmlFor="nome">Nome completo *</Label><Input id="nome" required /></div>
             <div className="space-y-2"><Label htmlFor="email">E-mail *</Label><Input id="email" type="email" required /></div>
