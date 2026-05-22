@@ -41,7 +41,7 @@ function ProceduresPage() {
   return (
     <>
       <section className="bg-radial-glow">
-        <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
+        <div className="mx-auto max-w-7xl px-4 py-14 md:px-8 md:py-28">
           <p className="text-xs uppercase tracking-[0.3em] text-primary">Especialidades</p>
           <h1 className="mt-3 max-w-3xl font-serif text-5xl md:text-6xl">Procedimentos</h1>
           <p className="mt-5 max-w-2xl text-muted-foreground">
@@ -65,7 +65,7 @@ function ProceduresPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-20 md:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-14 md:px-8">
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {list.map((p) => (
             <article key={p.name} className="group flex flex-col rounded-2xl border border-white/10 bg-card p-7 transition hover:border-primary/40">
@@ -81,7 +81,7 @@ function ProceduresPage() {
       </section>
 
       <section className="border-t border-white/5 bg-surface/40">
-        <div className="mx-auto max-w-5xl px-4 py-24 text-center md:px-8">
+        <div className="mx-auto max-w-5xl px-4 py-16 text-center md:px-8">
           <h2 className="font-serif text-4xl md:text-5xl">Não sabe qual procedimento é <em className="text-primary">ideal</em> para você?</h2>
           <p className="mx-auto mt-5 max-w-2xl text-muted-foreground">
             Agende uma consulta de avaliação. A Dra. Rebecca irá analisar seu caso individualmente

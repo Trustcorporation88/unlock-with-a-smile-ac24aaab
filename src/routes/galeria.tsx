@@ -16,7 +16,7 @@ function GaleriaPage() {
   return (
     <>
       <section className="bg-radial-glow">
-        <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
+        <div className="mx-auto max-w-7xl px-4 py-14 md:px-8 md:py-28">
           <p className="text-xs uppercase tracking-[0.3em] text-primary">Galeria</p>
           <h1 className="mt-3 max-w-3xl font-serif text-5xl md:text-6xl">Casos selecionados, com <em className="text-primary">ética</em> e privacidade</h1>
           <p className="mt-5 max-w-2xl text-muted-foreground">
@@ -26,7 +26,7 @@ function GaleriaPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-20 md:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-14 md:px-8">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {cards.map((_, i) => (
             <div key={i} className="group relative aspect-[4/5] overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-br from-surface via-background to-surface">
@@ -47,7 +47,7 @@ function GaleriaPage() {
             Por respeito à privacidade, parte do acervo é apresentado apenas em consulta presencial,
             com casos compatíveis com o seu perfil.
           </p>
-          <div className="mt-6">
+          <div className="mt-5">
             <Button asChild size="lg" className="rounded-full px-6">
               <Link to="/agendamento">Agendar Consulta</Link>
             </Button>

@@ -33,11 +33,11 @@ function SobrePage() {
   return (
     <>
       <section className="bg-radial-glow">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 md:grid-cols-2 md:px-8 md:py-28">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-14 md:grid-cols-2 md:px-8 md:py-28">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-primary">Sobre a Médica</p>
             <h1 className="mt-3 font-serif text-5xl leading-tight md:text-6xl">Dra. Rebecca Rossener</h1>
-            <p className="mt-6 text-pretty text-lg text-muted-foreground">
+            <p className="mt-5 text-pretty text-lg text-muted-foreground">
               Cirurgiã plástica formada pela USP, com especialização em cirurgia reparadora,
               pediátrica e anomalias vasculares. Uma trajetória marcada pela dedicação, pelo
               amor à medicina e pelo cuidado genuinamente humano com cada paciente.
@@ -52,7 +52,7 @@ function SobrePage() {
       </section>
 
       <section className="border-y border-white/5 bg-surface/40">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-24 md:grid-cols-5 md:px-8">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 md:grid-cols-5 md:px-8">
           <div className="md:col-span-2">
             <p className="text-xs uppercase tracking-[0.3em] text-primary">Minha História</p>
             <h2 className="mt-3 font-serif text-4xl md:text-5xl">
@@ -68,7 +68,7 @@ function SobrePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-24 md:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-16 md:px-8">
         <p className="text-xs uppercase tracking-[0.3em] text-primary">Valores</p>
         <h2 className="mt-3 max-w-2xl font-serif text-4xl md:text-5xl">O que guia minha <em className="text-primary">prática médica</em></h2>
         <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -83,7 +83,7 @@ function SobrePage() {
       </section>
 
       <section className="border-y border-white/5 bg-surface/40">
-        <div className="mx-auto max-w-7xl px-4 py-24 md:px-8">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
           <p className="text-xs uppercase tracking-[0.3em] text-primary">Formação & Credenciais</p>
           <h2 className="mt-3 max-w-3xl font-serif text-4xl md:text-5xl">Trajetória <em className="text-primary">acadêmica</em> e profissional</h2>
           <div className="mt-12 grid gap-px overflow-hidden rounded-2xl bg-white/10 md:grid-cols-2">
@@ -115,12 +115,12 @@ function SobrePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 py-24 text-center md:px-8">
+      <section className="mx-auto max-w-5xl px-4 py-16 text-center md:px-8">
         <Quote className="mx-auto h-8 w-8 text-primary" />
-        <blockquote className="mt-6 font-serif text-3xl leading-snug md:text-4xl">
+        <blockquote className="mt-5 font-serif text-3xl leading-snug md:text-4xl">
           "Cuidar de uma pessoa é muito mais do que operar — é caminhar junto, ouvir e respeitar cada história."
         </blockquote>
-        <p className="mt-6 text-xs uppercase tracking-[0.3em] text-muted-foreground">— Dra. Rebecca Rossener</p>
+        <p className="mt-5 text-xs uppercase tracking-[0.3em] text-muted-foreground">— Dra. Rebecca Rossener</p>
         <div className="mt-10">
           <Button asChild size="lg" className="rounded-full px-6">
             <Link to="/agendamento">Agendar Consulta</Link>

@@ -24,7 +24,7 @@ function BlogPage() {
   return (
     <>
       <section className="bg-radial-glow">
-        <div className="mx-auto max-w-7xl px-4 py-20 md:px-8 md:py-28">
+        <div className="mx-auto max-w-7xl px-4 py-14 md:px-8 md:py-28">
           <p className="text-xs uppercase tracking-[0.3em] text-primary">Blog</p>
           <h1 className="mt-3 max-w-3xl font-serif text-5xl md:text-6xl">Informação com <em className="text-primary">responsabilidade</em></h1>
           <p className="mt-5 max-w-2xl text-muted-foreground">
@@ -33,7 +33,7 @@ function BlogPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-20 md:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-14 md:px-8">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {posts.map((p) => (
             <article key={p.slug} className="group flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-card transition hover:border-primary/40">

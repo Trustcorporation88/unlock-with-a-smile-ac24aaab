@@ -46,15 +46,15 @@ function HomePage() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden bg-radial-glow">
-        <div className="mx-auto grid max-w-7xl items-center gap-12 px-4 py-20 md:grid-cols-2 md:px-8 md:py-28">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-14 md:grid-cols-2 md:px-8 md:py-28">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-primary">
               <Award className="h-3.5 w-3.5" /> Formada pela USP · Membro SBCP
             </span>
-            <h1 className="mt-6 text-balance font-serif text-5xl leading-[1.05] md:text-6xl lg:text-7xl">
+            <h1 className="mt-5 text-balance font-serif text-5xl leading-[1.05] md:text-6xl lg:text-7xl">
               Cirurgia Plástica com <em className="not-italic text-primary"><span className="italic">Excelência</span></em> e Cuidado Humano
             </h1>
-            <p className="mt-6 max-w-xl text-pretty text-base text-muted-foreground md:text-lg">
+            <p className="mt-5 max-w-xl text-pretty text-base text-muted-foreground md:text-lg">
               Especialista em cirurgia estética, reparadora, pediátrica e anomalias vasculares.
               Resultados naturais, atendimento acolhedor e segurança em cada etapa da sua jornada.
             </p>
@@ -94,7 +94,7 @@ function HomePage() {
 
       {/* SOBRE TEASER */}
       <section id="sobre" className="border-y border-white/5 bg-surface/50">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 md:grid-cols-5 md:px-8">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 md:grid-cols-5 md:px-8">
           <div className="md:col-span-2">
             <p className="text-xs uppercase tracking-[0.3em] text-primary">Sobre a Médica</p>
             <h2 className="mt-3 font-serif text-4xl md:text-5xl">
@@ -120,7 +120,7 @@ function HomePage() {
       </section>
 
       {/* ESPECIALIDADES */}
-      <section className="mx-auto max-w-7xl px-4 py-24 md:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-16 md:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-primary">Especialidades</p>
           <h2 className="mt-3 font-serif text-4xl md:text-5xl">
@@ -131,7 +131,7 @@ function HomePage() {
             seus objetivos e sua segurança.
           </p>
         </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {specialties.map((s) => (
             <div key={s.title} className="group relative overflow-hidden rounded-2xl border border-white/10 bg-card p-6 transition hover:border-primary/40">
               <div className="absolute inset-x-0 -top-1 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 transition group-hover:opacity-100" />
@@ -150,7 +150,7 @@ function HomePage() {
 
       {/* JORNADA */}
       <section className="border-y border-white/5 bg-surface/40">
-        <div className="mx-auto max-w-7xl px-4 py-24 md:px-8">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-xs uppercase tracking-[0.3em] text-primary">Sua Jornada</p>
             <h2 className="mt-3 font-serif text-4xl md:text-5xl">
@@ -160,7 +160,7 @@ function HomePage() {
               Acompanhamento completo e humanizado em cada etapa da sua transformação.
             </p>
           </div>
-          <ol className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-5">
+          <ol className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-5">
             {journey.map((step) => (
               <li key={step.n} className="relative rounded-2xl border border-white/10 bg-card p-6">
                 <span className="font-serif text-3xl text-primary">{step.n}</span>
@@ -178,7 +178,7 @@ function HomePage() {
       </section>
 
       {/* DEPOIMENTOS */}
-      <section className="mx-auto max-w-7xl px-4 py-24 md:px-8">
+      <section className="mx-auto max-w-7xl px-4 py-16 md:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs uppercase tracking-[0.3em] text-primary">Depoimentos</p>
           <h2 className="mt-3 font-serif text-4xl md:text-5xl">
@@ -189,7 +189,7 @@ function HomePage() {
             garantir privacidade e ética médica.
           </p>
         </div>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
           {testimonials.map((t, i) => (
             <figure key={i} className="rounded-2xl border border-white/10 bg-card p-7">
               <Quote className="h-6 w-6 text-primary" />
@@ -206,7 +206,7 @@ function HomePage() {
 
       {/* FAQ */}
       <section className="border-y border-white/5 bg-surface/40">
-        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-24 md:grid-cols-2 md:px-8">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 md:grid-cols-2 md:px-8">
           <div>
             <p className="text-xs uppercase tracking-[0.3em] text-primary">Dúvidas Frequentes</p>
             <h2 className="mt-3 font-serif text-4xl md:text-5xl">
@@ -234,7 +234,7 @@ function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="mx-auto max-w-5xl px-4 py-24 text-center md:px-8">
+      <section className="mx-auto max-w-5xl px-4 py-16 text-center md:px-8">
         <h2 className="font-serif text-4xl md:text-5xl">
           Pronta para iniciar sua jornada de <em className="text-primary">transformação</em>?
         </h2>
