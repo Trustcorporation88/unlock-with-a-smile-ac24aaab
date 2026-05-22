@@ -51,7 +51,7 @@ function HomePage() {
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-primary">
               <Award className="h-3.5 w-3.5" /> Formada pela USP · Membro SBCP
             </span>
-            <h1 className="mt-5 text-balance font-serif text-5xl leading-[1.05] md:text-6xl lg:text-7xl">
+            <h1 className="mt-5 text-balance font-serif text-4xl leading-[1.1] md:text-5xl lg:text-6xl">
               Cirurgia Plástica com <em className="not-italic text-primary"><span className="italic">Excelência</span></em> e Cuidado Humano
             </h1>
             <p className="mt-5 max-w-xl text-pretty text-base text-muted-foreground md:text-lg">
