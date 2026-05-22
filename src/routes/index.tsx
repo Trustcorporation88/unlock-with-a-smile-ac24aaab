@@ -46,7 +46,7 @@ function HomePage() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden bg-radial-glow">
-        <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-14 md:grid-cols-2 md:px-8 md:py-28">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-10 md:grid-cols-2 md:px-8 md:py-16">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-primary">
               <Award className="h-3.5 w-3.5" /> Formada pela USP · Membro SBCP
@@ -81,12 +81,12 @@ function HomePage() {
             </div>
             <div className="absolute -bottom-4 right-2 rounded-2xl bg-card px-4 py-2.5 text-xs shadow-xl ring-1 ring-border md:-right-6">
               <p className="text-muted-foreground">Especialidades</p>
-              <p className="font-serif text-sm">Reparadora · Pediátrica</p>
+              <p className="font-serif text-sm font-semibold text-foreground">Reparadora · Pediátrica</p>
             </div>
           </div>
 
         </div>
-        <div className="flex justify-center pb-10 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+        <div className="flex justify-center pb-6 text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
           <a href="#sobre" className="flex flex-col items-center gap-2 hover:text-primary">
             Saiba mais <ChevronDown className="h-4 w-4 animate-bounce" />
           </a>
