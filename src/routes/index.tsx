@@ -46,7 +46,7 @@ function HomePage() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden bg-radial-glow">
-        <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-14 md:grid-cols-2 md:px-8 md:py-28">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-10 md:grid-cols-2 md:px-8 md:py-16">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-primary">
               <Award className="h-3.5 w-3.5" /> Formada pela USP · Membro SBCP
