@@ -219,7 +219,7 @@ function HomePage() {
             {journey.map((step) => (
               <li key={step.n} className="relative rounded-2xl border border-border bg-card p-6">
                 <span className="font-serif text-3xl text-primary">{step.n}</span>
-                <h3 className="mt-2 font-serif text-lg">{step.t}</h3>
+                <h3 className="mt-2 font-serif text-lg text-card-foreground">{step.t}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{step.d}</p>
               </li>
             ))}
