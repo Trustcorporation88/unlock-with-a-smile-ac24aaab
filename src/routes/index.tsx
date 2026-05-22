@@ -219,7 +219,7 @@ function HomePage() {
             {journey.map((step) => (
               <li key={step.n} className="relative rounded-2xl border border-border bg-card p-6">
                 <span className="font-serif text-3xl text-primary">{step.n}</span>
-                <h3 className="mt-2 font-serif text-lg">{step.t}</h3>
+                <h3 className="mt-2 font-serif text-lg text-card-foreground">{step.t}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{step.d}</p>
               </li>
             ))}
@@ -248,7 +248,7 @@ function HomePage() {
           {testimonials.map((t, i) => (
             <figure key={i} className="rounded-2xl border border-border bg-card p-7">
               <Quote className="h-6 w-6 text-primary" />
-              <blockquote className="mt-4 font-serif text-lg leading-snug text-foreground/90">
+              <blockquote className="mt-4 font-serif text-lg leading-snug text-card-foreground">
                 "{t.text}"
               </blockquote>
               <figcaption className="mt-5 text-xs uppercase tracking-[0.2em] text-muted-foreground">
@@ -277,7 +277,7 @@ function HomePage() {
           <div className="space-y-3">
             {faqs.map((f) => (
               <details key={f.q} className="group rounded-xl border border-border bg-card p-5 open:border-primary/40">
-                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-lg">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-serif text-lg text-card-foreground">
                   {f.q}
                   <ChevronDown className="h-4 w-4 text-primary transition group-open:rotate-180" />
                 </summary>
