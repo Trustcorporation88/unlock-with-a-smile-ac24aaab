@@ -248,7 +248,7 @@ function HomePage() {
           {testimonials.map((t, i) => (
             <figure key={i} className="rounded-2xl border border-border bg-card p-7">
               <Quote className="h-6 w-6 text-primary" />
-              <blockquote className="mt-4 font-serif text-lg leading-snug text-foreground/90">
+              <blockquote className="mt-4 font-serif text-lg leading-snug text-card-foreground">
                 "{t.text}"
               </blockquote>
               <figcaption className="mt-5 text-xs uppercase tracking-[0.2em] text-muted-foreground">
