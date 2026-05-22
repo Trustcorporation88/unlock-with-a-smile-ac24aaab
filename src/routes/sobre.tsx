@@ -23,10 +23,10 @@ const values = [
 ];
 
 const timeline = [
-  { period: "2010–2016", title: "Graduação em Medicina", place: "Faculdade de Medicina da USP — São Paulo", desc: "Uma das mais renomadas faculdades de medicina do mundo." },
-  { period: "2017–2019", title: "Residência em Cirurgia Geral", place: "Hospital das Clínicas — FMUSP", desc: "Formação sólida em cirurgia com exposição a casos de alta complexidade." },
-  { period: "2019–2022", title: "Residência em Cirurgia Plástica", place: "Hospital das Clínicas — FMUSP", desc: "Especialização em cirurgia plástica estética e reparadora." },
-  { period: "2022–2023", title: "Fellowship em Cirurgia Pediátrica e Anomalias Vasculares", place: "Instituto da Criança — HC FMUSP", desc: "Subespecialização em cirurgia plástica pediátrica e tratamento de anomalias vasculares." },
+  { period: "Graduação", title: "Medicina — USP", place: "Faculdade de Medicina da Universidade de São Paulo", desc: "Entrou na medicina aos 16 anos, sendo a primeira da família a seguir essa trajetória." },
+  { period: "Residência", title: "Cirurgia Geral e Cirurgia Plástica", place: "Hospital das Clínicas — FMUSP", desc: "Formação completa com exposição a casos de alta complexidade no maior hospital da América Latina." },
+  { period: "Subespecialização", title: "Cirurgia Plástica Pediátrica e Malformações Vasculares", place: "Instituto da Criança — HC FMUSP", desc: "Foco em cirurgia reparadora infantil e tratamento de anomalias vasculares complexas." },
+  { period: "Experiência Internacional", title: "Cleveland Clinic · Sick Kids Hospital · Hospital Univ. La Paz", place: "Estados Unidos · Canadá · Espanha", desc: "Estágios em centros de referência mundial em cirurgia plástica pediátrica." },
 ];
 
 function SobrePage() {
@@ -108,7 +108,7 @@ function SobrePage() {
               <Stethoscope className="mt-1 h-5 w-5 text-primary" />
               <div>
                 <p className="text-xs uppercase tracking-[0.25em] text-primary">CRM/SP</p>
-                <p className="mt-1 font-serif text-lg">Registrada no Conselho Regional de Medicina de São Paulo</p>
+                <p className="mt-1 font-serif text-lg">CRM 176.098 · RQE 111.228</p>
               </div>
             </div>
           </div>

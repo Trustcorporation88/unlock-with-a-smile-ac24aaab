@@ -45,7 +45,7 @@ function AgendamentoPage() {
           {[
             { icon: Calendar, t: "Primeira consulta", d: "Avaliação completa do seu caso, com escuta ativa e planejamento individualizado." },
             { icon: Clock, t: "Duração", d: "Aproximadamente 45 a 60 minutos. Sem pressa, sem pressão." },
-            { icon: MapPin, t: "Local", d: "Av. Paulista, 1000 — Cj. 101, Bela Vista, São Paulo — SP." },
+            { icon: MapPin, t: "Local", d: "Rua Dr. Alceu de Campos Rodrigues, 46, Cj. 67 — Vila Nova Conceição, São Paulo — SP." },
           ].map((it) => (
             <div key={it.t} className="flex gap-4 rounded-2xl border border-white/10 bg-card p-5">
               <it.icon className="mt-1 h-5 w-5 shrink-0 text-primary" />

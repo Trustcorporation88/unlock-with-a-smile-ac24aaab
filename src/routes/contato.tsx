@@ -47,9 +47,9 @@ function ContatoPage() {
         <div className="space-y-5">
           <h2 className="font-serif text-3xl">Informações de Contato</h2>
           {[
-            { icon: MapPin, t: "Endereço", lines: ["Av. Paulista, 1000 — Cj. 101", "Bela Vista, São Paulo — SP", "CEP 01310-100"] },
-            { icon: Phone, t: "Telefone / WhatsApp", lines: ["(11) 99999-9999"] },
-            { icon: Mail, t: "E-mail", lines: ["contato@drarebeccarossener.com.br"] },
+            { icon: MapPin, t: "Endereço", lines: ["Rua Dr. Alceu de Campos Rodrigues, 46 — Cj. 67", "Vila Nova Conceição, São Paulo — SP", "CEP 04544-000"] },
+            { icon: Phone, t: "Telefone / WhatsApp", lines: ["(11) 99972-0066"] },
+            { icon: Mail, t: "E-mail", lines: ["moparabebes@gmail.com"] },
             { icon: Clock, t: "Horário de Atendimento", lines: ["Segunda a Sexta: 8h às 18h", "Sábado: 8h às 13h"] },
           ].map((it) => (
             <div key={it.t} className="flex gap-4 rounded-2xl border border-white/10 bg-card p-5">
@@ -61,7 +61,7 @@ function ContatoPage() {
             </div>
           ))}
           <Button asChild size="lg" className="w-full rounded-full bg-[#25D366] text-white hover:bg-[#1ebd5a]">
-            <a href="https://wa.me/5511999999999?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Rebecca%20Rossener." target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/5511999720066?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Rebecca%20Rossener." target="_blank" rel="noopener noreferrer">
               Falar pelo WhatsApp
             </a>
           </Button>
