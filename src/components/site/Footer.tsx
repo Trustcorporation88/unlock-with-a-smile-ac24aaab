@@ -16,10 +16,10 @@ export function SiteFooter() {
           </p>
           <div className="mt-6 flex gap-3">
             <a
-              href="https://www.instagram.com/drarebecca.plastica"
+              href="https://www.instagram.com/drarebeccarossener"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Instagram @drarebecca.plastica"
+              aria-label="Instagram @drarebeccarossener"
               className="grid h-10 w-10 place-items-center rounded-full border border-border text-foreground/80 transition hover:border-primary hover:text-primary"
             >
               <Instagram className="h-4 w-4" />
