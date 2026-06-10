@@ -12,57 +12,6 @@ export type ProcedureCategory = {
 
 export const categories: ProcedureCategory[] = [
   {
-    slug: "otoplastia-modelagem",
-    name: "Otoplastia & Modelagem de Orelha",
-    shortName: "Otoplastia / MOBE",
-    tagline: "Correção de orelha em abano em bebês, crianças e adultos",
-    intro:
-      "A modelagem não-cirúrgica (MOBE) corrige deformidades da orelha em recém-nascidos com moldes especiais aplicados nas primeiras semanas de vida, evitando uma cirurgia futura. Para crianças a partir dos 6 anos e adultos, a otoplastia é o procedimento cirúrgico de escolha, com cicatrizes discretas atrás da orelha e resultado natural.",
-    highlights: [
-      "MOBE indicado idealmente entre 1 e 6 semanas de vida",
-      "Otoplastia com cicatriz oculta na parte posterior da orelha",
-      "Procedimento ambulatorial com retorno rápido às atividades",
-      "Resultado natural, simétrico e duradouro",
-    ],
-    indications: [
-      "Orelha em abano (proeminente)",
-      "Hélice dobrada ou enrolada (lop ear)",
-      "Conchas auriculares assimétricas",
-      "Deformidades congênitas do pavilhão auricular",
-    ],
-    procedures: [
-      { name: "MOBE — Modelagem em Bebês", desc: "Correção não-cirúrgica com molde personalizado, ideal entre 1 e 6 semanas de vida." },
-      { name: "Otoplastia Tradicional", desc: "Cirurgia para correção da orelha em abano com cicatriz oculta atrás da orelha." },
-    ],
-    recovery: "Retorno às atividades leves em 5 a 7 dias. Faixa elástica noturna por 3 a 4 semanas. Resultado final aparente após 30 dias.",
-  },
-  {
-    slug: "anomalias-vasculares",
-    name: "Anomalias Vasculares",
-    shortName: "Anomalias Vasculares",
-    tagline: "Hemangiomas e malformações vasculares em crianças e adultos",
-    intro:
-      "Anomalias vasculares englobam hemangiomas (tumores) e malformações vasculares (venosas, linfáticas, capilares e arteriovenosas). O tratamento exige avaliação multidisciplinar, diagnóstico preciso por imagem e plano individualizado — que pode envolver acompanhamento clínico, medicação, escleroterapia ou cirurgia.",
-    highlights: [
-      "Avaliação especializada com equipe multidisciplinar",
-      "Diagnóstico apoiado por ultrassom, ressonância e estudo por imagem",
-      "Tratamento clínico, intervencionista ou cirúrgico conforme o caso",
-      "Acompanhamento longitudinal da criança ao adulto",
-    ],
-    indications: [
-      "Hemangioma infantil em crescimento ou ulcerado",
-      "Manchas vinho do Porto e malformações capilares",
-      "Malformações venosas e linfáticas (linfangiomas)",
-      "Sequelas estéticas e funcionais de lesões vasculares",
-    ],
-    procedures: [
-      { name: "Hemangiomas Infantis", desc: "Acompanhamento clínico, tratamento medicamentoso e cirurgia quando indicada." },
-      { name: "Malformações Vasculares", desc: "Abordagem multidisciplinar de lesões venosas, linfáticas e capilares." },
-      { name: "Escleroterapia & Ressecção", desc: "Procedimentos minimamente invasivos e cirúrgicos para lesões selecionadas." },
-    ],
-    recovery: "Variável conforme o procedimento. Casos clínicos não exigem internação; cirurgias podem necessitar de 1 a 3 dias de repouso domiciliar.",
-  },
-  {
     slug: "cirurgia-pediatrica",
     name: "Cirurgia Plástica Pediátrica",
     shortName: "Cirurgia Pediátrica",
