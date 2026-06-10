@@ -203,17 +203,30 @@ function HomePage() {
             </p>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {[video1, video2].map((v, i) => (
-              <figure key={i} className="overflow-hidden rounded-2xl border border-border bg-black">
-                <video
-                  src={v.url}
-                  controls
-                  preload="none"
-                  playsInline
-                  className="aspect-video w-full bg-black"
-                />
-              </figure>
-            ))}
+            <figure className="overflow-hidden rounded-2xl border border-border bg-black">
+              <video
+                src={video1.url}
+                controls
+                preload="none"
+                playsInline
+                className="aspect-video w-full bg-black"
+              />
+              <figcaption className="bg-card px-5 py-4 text-sm text-muted-foreground">
+                A Dra. Rebecca fala sobre a importância da escuta individualizada no planejamento de cada procedimento.
+              </figcaption>
+            </figure>
+            <figure className="overflow-hidden rounded-2xl border border-border bg-black">
+              <video
+                src={video2.url}
+                controls
+                preload="none"
+                playsInline
+                className="aspect-video w-full bg-black"
+              />
+              <figcaption className="bg-card px-5 py-4 text-sm text-muted-foreground">
+                Reflexão sobre ética, segurança e o compromisso com resultados naturais em cirurgia plástica.
+              </figcaption>
+            </figure>
           </div>
           <div className="mt-8 text-center">
             <a
