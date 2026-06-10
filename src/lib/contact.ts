@@ -1,40 +1,46 @@
 // ⚠️ DADOS DE CONTATO — fonte única da verdade
-// Substituir os campos marcados com TODO pelos dados reais da Dra. Rebecca.
-// Tudo no site (Header, Footer, WhatsApp, Contato, Agendamento, schema SEO)
-// lê deste arquivo.
+// Apenas dados verificados (matéria CALONE® XP + comunicação oficial da Dra.).
+// Campos marcados como TODO devem ser preenchidos quando confirmados pela equipe.
 
 export const CONTACT = {
   doctor: {
     name: "Dra. Rebecca Rossener",
-    crm: "CRM-SP 176.098", // TODO: confirmar
-    rqe: "RQE 111.228", // TODO: confirmar
+    crm: "CRM-SP 176.098",
+    rqe: "RQE 111.228",
     specialty: "Cirurgia Plástica",
+    formation: "Faculdade de Medicina da USP",
   },
 
-  // WhatsApp — apenas dígitos (DDI + DDD + número) para o link wa.me
+  // WhatsApp — confirmado (assessoria)
   whatsappNumber: "5511940405399",
   whatsappDisplay: "(11) 94040-5399",
 
-  email: "contato@drarebeccarossener.com.br", // TODO: e-mail real
+  // E-mail oficial — TODO: confirmar com a equipe
+  email: "",
 
-  address: {
-    street: "Av. Fictícia, 123 — Sala 45", // TODO
-    neighborhood: "Bairro Exemplo", // TODO
-    city: "São Paulo",
-    state: "SP",
-    zip: "00000-000", // TODO
-    country: "BR",
-  },
+  // Localidades de atendimento — São Paulo e Taubaté
+  cities: ["São Paulo — SP", "Taubaté — SP"] as const,
+  primaryCity: "São Paulo",
+  state: "SP",
+  country: "BR",
 
   hours: {
     weekdays: "Segunda a Sexta: 8h às 18h",
-    saturday: "Sábado: 8h às 13h",
+    saturday: "Sábado: 8h às 13h (sob agendamento)",
   },
 
   social: {
     instagram: "https://www.instagram.com/drarebeccarossener",
     instagramHandle: "@drarebeccarossener",
   },
+
+  // Imprensa
+  press: {
+    biografia: {
+      title: "Biografia© Documentário — Grupo CALONE®",
+      url: "https://calonexp.com/dra-rebecca-rossener-participa-do-biografia-documentario-e-destaca-a-cirurgia-plastica-como-uniao-entre-tecnica-etica-e-cuidado-individualizado/",
+    },
+  },
 } as const;
 
-export const ADDRESS_ONE_LINE = `${CONTACT.address.street} — ${CONTACT.address.neighborhood}, ${CONTACT.address.city} — ${CONTACT.address.state}`;
+export const CITIES_ONE_LINE = CONTACT.cities.join(" · ");
