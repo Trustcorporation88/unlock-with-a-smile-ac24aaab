@@ -32,8 +32,8 @@ export const categories: ProcedureCategory[] = [
     ],
     procedures: [
       { name: "Otoplastia Infantil", desc: "Correção da orelha em abano a partir dos 6 anos." },
-      { name: "Tratamento de Anomalias Vasculares", desc: "Hemangiomas e malformações em bebês e crianças." },
       { name: "Reparação Pós-Trauma", desc: "Reconstrução de lesões e cicatrizes na infância." },
+      { name: "Procedimentos Reparadores Pediátricos", desc: "Cirurgias delicadas para correções estético-funcionais em bebês e crianças." },
     ],
     recovery: "Maioria dos procedimentos com alta no mesmo dia ou em 24h. Retorno escolar geralmente em 7 a 10 dias.",
   },
