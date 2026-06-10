@@ -60,11 +60,12 @@ function SobrePage() {
             </h2>
           </div>
           <div className="space-y-5 text-muted-foreground md:col-span-3">
-            <p>Entrei na medicina com apenas 16 anos, sendo a primeira da família a seguir essa trajetória. Desde o início, sabia que queria mais do que tratar doenças — queria transformar vidas, restaurar a autoestima e cuidar de pessoas com um olhar humano e acolhedor.</p>
-            <p>A cirurgia plástica surgiu como a especialidade que unia minha habilidade técnica ao meu propósito de vida. Ao longo da residência no Hospital das Clínicas da USP, apaixonei-me pela cirurgia pediátrica e pelo tratamento de anomalias vasculares — áreas em que a cirurgia reparadora pode mudar profundamente a qualidade de vida de crianças e de suas famílias.</p>
-            <p>Participei de expedições cirúrgicas em regiões remotas do Brasil, levando cirurgia plástica reparadora a comunidades sem acesso a esse tipo de cuidado. Essa experiência reforçou meu compromisso com a medicina ética, acessível e humanizada.</p>
-            <p>Hoje, atendo pacientes que buscam tanto procedimentos estéticos quanto reparadores, sempre com a mesma dedicação: resultados naturais, segurança em primeiro lugar e um cuidado que vai muito além da cirurgia.</p>
+            <p>Natural de <strong className="text-foreground">Taubaté (SP)</strong>, cresci em um ambiente familiar marcado por disciplina, comprometimento e empatia — valores que hoje guiam minha forma de me relacionar com cada paciente. Sou a filha mais velha de três irmãos e, desde o período escolar, nunca tive dúvida de que queria fazer medicina.</p>
+            <p>Formei-me em Medicina pela <strong className="text-foreground">Faculdade de Medicina da USP em 2015</strong>, participando ativamente das Ligas Acadêmicas de Assistência Primária à Mulher, Genética Clínica e Acupuntura. Outro momento marcante foi o projeto <em>Bandeiras Científicas</em>, que leva atendimento médico a comunidades carentes do interior do Brasil — uma vivência que reforçou meu interesse pela área cirúrgica.</p>
+            <p>Realizei residência em <strong className="text-foreground">Cirurgia Geral no Hospital das Clínicas da FMUSP</strong> (concluída em 2019) e, em seguida, especialização em <strong className="text-foreground">Cirurgia Plástica na mesma instituição</strong> (2023), sob orientação do Prof. Dov Goldenberg. Minha trajetória inclui ainda experiências internacionais relevantes: estágio observacional na Divisão de Cirurgia Plástica do <strong className="text-foreground">Hospital for Sick Children Foundation</strong> (Canadá) e participação em programa de verão no <strong className="text-foreground">Center for Reproductive Medicine da Cleveland Clinic Foundation</strong> (EUA).</p>
+            <p>Hoje dedico-me à prática da cirurgia plástica com foco em resultados seguros, éticos e individualizados. Acredito que a técnica deve caminhar lado a lado com a sensibilidade e o respeito às particularidades de cada paciente — e que o estudo contínuo é a base de uma medicina verdadeiramente responsável.</p>
           </div>
+
         </div>
       </section>
 
