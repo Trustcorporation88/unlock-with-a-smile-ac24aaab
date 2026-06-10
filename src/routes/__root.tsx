@@ -13,27 +13,30 @@ import { SiteHeader } from "@/components/site/Header";
 import { SiteFooter } from "@/components/site/Footer";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { Toaster } from "@/components/ui/sonner";
-import { CONTACT, ADDRESS_ONE_LINE } from "@/lib/contact";
+import { CONTACT, CITIES_ONE_LINE } from "@/lib/contact";
 
 const physicianSchema = {
   "@context": "https://schema.org",
   "@type": "Physician",
   name: CONTACT.doctor.name,
-  medicalSpecialty: ["PlasticSurgery", "Pediatric"],
+  medicalSpecialty: ["PlasticSurgery"],
   url: "https://unlock-with-a-smile.lovable.app",
   telephone: `+${CONTACT.whatsappNumber}`,
-  email: CONTACT.email,
+  ...(CONTACT.email ? { email: CONTACT.email } : {}),
   sameAs: [CONTACT.social.instagram],
-  address: {
+  address: CONTACT.cities.map((city) => ({
     "@type": "PostalAddress",
-    streetAddress: CONTACT.address.street,
-    addressLocality: CONTACT.address.city,
-    addressRegion: CONTACT.address.state,
-    postalCode: CONTACT.address.zip,
-    addressCountry: CONTACT.address.country,
+    addressLocality: city.replace(/ —.*$/, ""),
+    addressRegion: CONTACT.state,
+    addressCountry: CONTACT.country,
+  })),
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: CONTACT.doctor.formation,
   },
-  description: `${CONTACT.doctor.specialty} — ${CONTACT.doctor.crm} · ${CONTACT.doctor.rqe}. Cirurgia reparadora, pediátrica, anomalias vasculares e estética em ${CONTACT.address.city}.`,
+  description: `${CONTACT.doctor.specialty} — ${CONTACT.doctor.crm} · ${CONTACT.doctor.rqe}. Formação pela USP, com atuação em cirurgia plástica reparadora, pediátrica e estética. Atendimento em ${CITIES_ONE_LINE}.`,
 };
+
 
 function NotFoundComponent() {
   return (
