@@ -64,17 +64,11 @@ function ProceduresPage() {
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {list.map((p) => {
             const slug =
-              p.category === "Pediátrica" || p.category === "MOBE"
-                ? p.category === "MOBE"
-                  ? "otoplastia-modelagem"
-                  : p.name.toLowerCase().includes("otoplastia")
-                    ? "otoplastia-modelagem"
-                    : "cirurgia-pediatrica"
-                : p.category === "Anomalias Vasculares"
-                  ? "anomalias-vasculares"
-                  : p.category === "Reparadora"
-                    ? "reparadora"
-                    : "estetica";
+              p.category === "Pediátrica"
+                ? "cirurgia-pediatrica"
+                : p.category === "Reparadora"
+                  ? "reparadora"
+                  : "estetica";
             return (
               <Link
                 key={p.name}
