@@ -18,11 +18,23 @@ export const CONTACT = {
   // E-mail oficial — TODO: confirmar com a equipe
   email: "",
 
-  // Localidades de atendimento — São Paulo e Taubaté
+  // Localidades de atendimento
   cities: ["São Paulo — SP", "Taubaté — SP"] as const,
   primaryCity: "São Paulo",
   state: "SP",
   country: "BR",
+
+  // Endereço principal — A Sartor Medicina Integrada
+  clinic: {
+    name: "A Sartor Medicina Integrada",
+    address: "Rua Helena, 218 (conjunto 410)",
+    building: "Edifício Trade Tower, 4º andar",
+    neighborhood: "Vila Olímpia",
+    city: "São Paulo",
+    state: "SP",
+    cep: "04552-050",
+    fullAddress: "Rua Helena, 218 (conjunto 410) — Edifício Trade Tower, 4º andar — Vila Olímpia, São Paulo - SP",
+  },
 
   hours: {
     weekdays: "Segunda a Sexta: 8h às 18h",

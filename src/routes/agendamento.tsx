@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
+import { CONTACT } from "@/lib/contact";
 
 export const Route = createFileRoute("/agendamento")({
   component: AgendamentoPage,
@@ -46,7 +47,7 @@ function AgendamentoPage() {
           {[
             { icon: Calendar, t: "Primeira consulta", d: "Avaliação completa do seu caso, com escuta ativa e planejamento individualizado." },
             { icon: Clock, t: "Duração", d: "Aproximadamente 45 a 60 minutos. Sem pressa, sem pressão." },
-            { icon: MapPin, t: "Local", d: "Atendimento em São Paulo (SP) e Taubaté (SP). O endereço da consulta é confirmado no agendamento." },
+            { icon: MapPin, t: "Local", d: `${CONTACT.clinic.name} — ${CONTACT.clinic.address}, ${CONTACT.clinic.building} — ${CONTACT.clinic.neighborhood}, ${CONTACT.clinic.city} — ${CONTACT.clinic.state}.` },
           ].map((it) => (
             <div key={it.t} className="flex gap-4 rounded-2xl border border-border bg-card p-5">
               <it.icon className="mt-1 h-5 w-5 shrink-0 text-primary" />
