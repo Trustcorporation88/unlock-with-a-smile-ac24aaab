@@ -44,7 +44,7 @@ function SobrePage() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <span className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-xs"><GraduationCap className="h-4 w-4 text-primary" /> USP — Faculdade de Medicina</span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-xs"><Award className="h-4 w-4 text-primary" /> Membro SBCP</span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-xs"><Stethoscope className="h-4 w-4 text-primary" /> CRM-SP 176.098 · RQE 111.228</span>
             </div>
           </div>
           <Medallion className="mx-auto aspect-square w-full max-w-[480px]" />
