@@ -10,16 +10,16 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Dra. Rebecca Rossener — Cirurgia Plástica em São Paulo" },
-      { name: "description", content: "Cirurgia plástica estética, reparadora e pediátrica. Formada pela USP, membro da SBCP. Atendimento humanizado em São Paulo." },
+      { name: "description", content: "Cirurgia plástica em São Paulo e Taubaté. Formação pela Faculdade de Medicina da USP, com residência em Cirurgia Geral e especialização em Cirurgia Plástica no HC-FMUSP." },
     ],
   }),
 });
 
 const specialties = [
-  { title: "Cirurgia Reparadora", desc: "Reconstrução de mama, pós-bariátrica, sequelas de trauma e cicatrizes complexas.", icon: Shield },
-  { title: "Cirurgia Pediátrica", desc: "Cirurgia plástica infantil com técnica delicada e atendimento especializado para crianças.", icon: Heart },
-  { title: "Anomalias Vasculares", desc: "Tratamento de hemangiomas, malformações vasculares e linfáticas, em adultos e crianças.", icon: Stethoscope },
-  { title: "Estética Facial e Corporal", desc: "Rinoplastia, blefaroplastia, mamoplastia, abdominoplastia e contorno corporal.", icon: Sparkles },
+  { title: "Cirurgia Plástica Pediátrica", desc: "Cirurgia plástica em bebês, crianças e adolescentes, com técnica delicada e visão de longo prazo sobre o desenvolvimento.", icon: Heart },
+  { title: "Cirurgia Reparadora", desc: "Reconstrução pós-trauma, pós-oncológica e revisão de cicatrizes — devolvendo forma e função com técnica precisa.", icon: Shield },
+  { title: "Cirurgia Estética", desc: "Procedimentos faciais e corporais com foco em resultado natural e respeito à individualidade.", icon: Sparkles },
+  { title: "Cuidado Individualizado", desc: "Cada caso estudado em profundidade, com indicação honesta, ética e baseada em evidências.", icon: Stethoscope },
 ];
 
 const journey = [
