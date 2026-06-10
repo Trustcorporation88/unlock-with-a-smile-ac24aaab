@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Award, GraduationCap, Stethoscope, Heart, Quote } from "lucide-react";
+import { Award, GraduationCap, Stethoscope, Heart, Quote, Film, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Medallion } from "@/components/site/Medallion";
 
@@ -7,8 +7,8 @@ export const Route = createFileRoute("/sobre")({
   component: SobrePage,
   head: () => ({
     meta: [
-      { title: "Sobre a Dra. Rebecca Rossener — Cirurgiã Plástica" },
-      { name: "description", content: "Cirurgiã plástica formada pela USP, com especialização em cirurgia reparadora, pediátrica e anomalias vasculares. Conheça sua trajetória." },
+      { title: "Sobre a Dra. Rebecca Rossener — Cirurgiã Plástica USP" },
+      { name: "description", content: "Natural de Taubaté (SP), formada em Medicina pela USP (2015), com residência em Cirurgia Geral e especialização em Cirurgia Plástica no HC-FMUSP. Experiência internacional em SickKids (Canadá) e Cleveland Clinic (EUA)." },
     ],
   }),
 });
@@ -23,10 +23,10 @@ const values = [
 ];
 
 const timeline = [
-  { period: "Graduação", title: "Medicina — USP", place: "Faculdade de Medicina da Universidade de São Paulo", desc: "Entrou na medicina aos 16 anos, sendo a primeira da família a seguir essa trajetória." },
-  { period: "Residência", title: "Cirurgia Geral e Cirurgia Plástica", place: "Hospital das Clínicas — FMUSP", desc: "Formação completa com exposição a casos de alta complexidade no maior hospital da América Latina." },
-  { period: "Subespecialização", title: "Cirurgia Plástica Pediátrica e Malformações Vasculares", place: "Instituto da Criança — HC FMUSP", desc: "Foco em cirurgia reparadora infantil e tratamento de anomalias vasculares complexas." },
-  { period: "Experiência Internacional", title: "Cleveland Clinic · Sick Kids Hospital · Hospital Univ. La Paz", place: "Estados Unidos · Canadá · Espanha", desc: "Estágios em centros de referência mundial em cirurgia plástica pediátrica." },
+  { period: "Graduação · 2015", title: "Medicina — USP", place: "Faculdade de Medicina da Universidade de São Paulo", desc: "Participação ativa nas Ligas Acadêmicas de Assistência Primária à Mulher, Genética Clínica e Acupuntura, e no projeto Bandeiras Científicas — levando atendimento médico a comunidades carentes do interior do Brasil." },
+  { period: "Residência · 2019", title: "Cirurgia Geral", place: "Hospital das Clínicas — FMUSP", desc: "Formação completa em cirurgia geral no maior complexo hospitalar da América Latina." },
+  { period: "Especialização · 2023", title: "Cirurgia Plástica", place: "Hospital das Clínicas — FMUSP", desc: "Especialização em cirurgia plástica sob orientação do Prof. Dov Goldenberg, com atuação em cirurgia reparadora, pediátrica e estética." },
+  { period: "Internacional", title: "SickKids · Cleveland Clinic", place: "Toronto (Canadá) · Cleveland (EUA)", desc: "Estágio observacional na Divisão de Cirurgia Plástica do Hospital for Sick Children Foundation (Canadá) e programa de verão no Center for Reproductive Medicine da Cleveland Clinic Foundation (EUA)." },
 ];
 
 function SobrePage() {
