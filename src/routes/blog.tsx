@@ -15,7 +15,7 @@ const posts = [
   { slug: "mitos-cirurgia-plastica", title: "5 mitos sobre cirurgia plástica que precisam acabar", excerpt: "Separando crenças populares da realidade científica, com responsabilidade.", date: "10 Mai 2026", read: "6 min" },
   { slug: "pre-operatorio-seguro", title: "Pré-operatório: como se preparar para uma cirurgia segura", excerpt: "Exames, hábitos e cuidados que aumentam a segurança e a qualidade do resultado.", date: "28 Abr 2026", read: "5 min" },
   { slug: "cirurgia-pediatrica", title: "Cirurgia plástica em crianças: quando é indicada?", excerpt: "Entenda o papel da cirurgia reparadora pediátrica e seus principais cuidados.", date: "12 Abr 2026", read: "7 min" },
-  { slug: "anomalias-vasculares", title: "Anomalias vasculares: hemangiomas e malformações", excerpt: "O que são, como diagnosticar e quais são as opções de tratamento atuais.", date: "02 Abr 2026", read: "8 min" },
+  { slug: "tecnica-etica-cuidado", title: "Técnica, ética e cuidado: o tripé da cirurgia plástica responsável", excerpt: "Como o estudo contínuo e a indicação honesta moldam cada decisão clínica.", date: "02 Abr 2026", read: "6 min" },
   { slug: "pos-operatorio-resultado", title: "O pós-operatório como parte do resultado", excerpt: "Por que o acompanhamento próximo é tão importante quanto a cirurgia em si.", date: "20 Mar 2026", read: "4 min" },
   { slug: "expectativas-realistas", title: "Expectativas realistas: o melhor caminho para a satisfação", excerpt: "Como uma conversa franca antes da cirurgia transforma a experiência do paciente.", date: "08 Mar 2026", read: "5 min" },
 ];
