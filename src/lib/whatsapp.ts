@@ -8,8 +8,7 @@ export function getWhatsAppMessage(pathname: string): string {
 
   if (pathname === "/") return `${base} e gostaria de agendar uma avaliação particular.`;
   if (pathname === "/procedimentos") return `${base} e gostaria de mais informações sobre os procedimentos.`;
-  if (pathname.startsWith("/procedimentos/otoplastia-modelagem")) return `${base} e tenho interesse em MOBE / otoplastia. Gostaria de agendar uma avaliação.`;
-  if (pathname.startsWith("/procedimentos/anomalias-vasculares")) return `${base} e gostaria de mais informações sobre tratamento de anomalias vasculares / hemangiomas.`;
+  if (pathname.startsWith("/procedimentos/cirurgia-pediatrica")) return `${base} e preciso de uma avaliação de cirurgia pediátrica. Gostaria de agendar uma consulta.`;
   if (pathname.startsWith("/procedimentos/cirurgia-pediatrica")) return `${base} e preciso de uma avaliação de cirurgia pediátrica. Gostaria de agendar uma consulta.`;
   if (pathname.startsWith("/procedimentos/reparadora")) return `${base} e gostaria de agendar uma avaliação para cirurgia reparadora.`;
   if (pathname.startsWith("/procedimentos/estetica")) return `${base} e tenho interesse em procedimentos estéticos. Gostaria de agendar uma consulta.`;
