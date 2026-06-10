@@ -12,8 +12,8 @@ export const CONTACT = {
   },
 
   // WhatsApp — apenas dígitos (DDI + DDD + número) para o link wa.me
-  whatsappNumber: "55119999999999", // TODO: número real
-  whatsappDisplay: "(11) 99999-9999", // TODO: número real formatado
+  whatsappNumber: "5511940405399",
+  whatsappDisplay: "(11) 94040-5399",
 
   email: "contato@drarebeccarossener.com.br", // TODO: e-mail real
 
