@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Mail, MapPin, Phone } from "lucide-react";
-import { CONTACT, ADDRESS_ONE_LINE } from "@/lib/contact";
+import { CONTACT, CITIES_ONE_LINE } from "@/lib/contact";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 
 export function SiteFooter() {
