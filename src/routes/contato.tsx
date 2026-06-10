@@ -50,7 +50,7 @@ function ContatoPage() {
         <div className="space-y-5">
           <h2 className="font-serif text-3xl">Informações de Contato</h2>
           {([
-            { icon: MapPin, t: "Atendimento", lines: [...CONTACT.cities] },
+            { icon: MapPin, t: "Endereço", lines: [CONTACT.clinic.name, CONTACT.clinic.address, CONTACT.clinic.building, `${CONTACT.clinic.neighborhood}, ${CONTACT.clinic.city} — ${CONTACT.clinic.state}`] },
             { icon: Phone, t: "Telefone / WhatsApp", lines: [CONTACT.whatsappDisplay] },
             ...(CONTACT.email ? [{ icon: Mail, t: "E-mail", lines: [CONTACT.email] }] : []),
             { icon: Clock, t: "Horário de Atendimento", lines: [CONTACT.hours.weekdays, CONTACT.hours.saturday] },
