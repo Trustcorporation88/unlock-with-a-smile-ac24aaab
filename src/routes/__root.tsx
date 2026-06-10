@@ -13,6 +13,27 @@ import { SiteHeader } from "@/components/site/Header";
 import { SiteFooter } from "@/components/site/Footer";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { Toaster } from "@/components/ui/sonner";
+import { CONTACT, ADDRESS_ONE_LINE } from "@/lib/contact";
+
+const physicianSchema = {
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  name: CONTACT.doctor.name,
+  medicalSpecialty: ["PlasticSurgery", "Pediatric"],
+  url: "https://unlock-with-a-smile.lovable.app",
+  telephone: `+${CONTACT.whatsappNumber}`,
+  email: CONTACT.email,
+  sameAs: [CONTACT.social.instagram],
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: CONTACT.address.street,
+    addressLocality: CONTACT.address.city,
+    addressRegion: CONTACT.address.state,
+    postalCode: CONTACT.address.zip,
+    addressCountry: CONTACT.address.country,
+  },
+  description: `${CONTACT.doctor.specialty} — ${CONTACT.doctor.crm} · ${CONTACT.doctor.rqe}. Cirurgia reparadora, pediátrica, anomalias vasculares e estética em ${CONTACT.address.city}.`,
+};
 
 function NotFoundComponent() {
   return (
@@ -84,6 +105,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Onest:wght@300;400;500;600;700&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(physicianSchema),
       },
     ],
   }),
