@@ -116,7 +116,49 @@ function SobrePage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+        <p className="text-xs uppercase tracking-[0.3em] text-primary">Mídia & Imprensa</p>
+        <h2 className="mt-3 max-w-3xl font-serif text-4xl md:text-5xl">
+          Reconhecida em <em className="text-primary">documentário</em> sobre ciência, ética e propósito
+        </h2>
+        <div className="mt-10 grid gap-6 md:grid-cols-5">
+          <div className="md:col-span-2">
+            <div className="aspect-[3/2] overflow-hidden rounded-2xl ring-1 ring-border">
+              <img
+                src="https://calonexp.com/storage/2026/04/GC_04207-768x512.jpg"
+                alt="Dra. Rebecca Rossener no documentário Biografia© do Grupo CALONE"
+                loading="lazy"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </div>
+          <article className="md:col-span-3 rounded-2xl border border-border bg-card p-7">
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-[10px] uppercase tracking-[0.25em] text-primary">
+              <Film className="h-3 w-3" /> Biografia© Documentário · Grupo CALONE®
+            </span>
+            <h3 className="mt-4 font-serif text-2xl leading-snug">
+              Dra. Rebecca Rossener destaca a cirurgia plástica como união entre técnica, ética e cuidado individualizado
+            </h3>
+            <p className="mt-3 text-sm text-muted-foreground">
+              A Dra. Rebecca foi convidada a participar do <em>Biografia©</em>, projeto do Grupo CALONE® — signatário do Pacto Global da ONU — dedicado à Agenda 2030, que apresenta trajetórias de especialistas com propósito. A série será lançada na plataforma de streaming CALONE® XP.
+            </p>
+            <blockquote className="mt-5 border-l-2 border-primary/60 pl-4 font-serif text-base italic text-foreground/90">
+              "O que mais me orgulha na minha trajetória é ser verdadeira no que acredito. Nunca abro mão dos meus valores."
+            </blockquote>
+            <a
+              href="https://calonexp.com/dra-rebecca-rossener-participa-do-biografia-documentario-e-destaca-a-cirurgia-plastica-como-uniao-entre-tecnica-etica-e-cuidado-individualizado/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center gap-2 text-sm text-primary hover:underline"
+            >
+              Ler matéria completa na CALONE® XP <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+          </article>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-5xl px-4 py-16 text-center md:px-8">
+
         <Quote className="mx-auto h-8 w-8 text-primary" />
         <blockquote className="mt-5 font-serif text-3xl leading-snug md:text-4xl">
           "Cuidar de uma pessoa é muito mais do que operar — é caminhar junto, ouvir e respeitar cada história."
