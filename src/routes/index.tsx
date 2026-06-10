@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Award, Heart, Shield, Sparkles, Stethoscope, ChevronDown, Quote } from "lucide-react";
+import { ArrowRight, Award, Heart, Shield, Sparkles, Stethoscope, ChevronDown, Quote, PlayCircle } from "lucide-react";
 import { Medallion } from "@/components/site/Medallion";
 import { Button } from "@/components/ui/button";
+import video1 from "@/assets/mensagem-dra-rebecca-1.mp4.asset.json";
+import video2 from "@/assets/mensagem-dra-rebecca-2.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
