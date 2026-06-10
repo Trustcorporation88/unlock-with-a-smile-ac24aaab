@@ -8,7 +8,7 @@ export const Route = createFileRoute("/procedimentos")({
   head: () => ({
     meta: [
       { title: "Procedimentos — Dra. Rebecca Rossener" },
-      { name: "description", content: "Conheça os procedimentos realizados pela Dra. Rebecca Rossener: cirurgia facial, corporal, pediátrica, anomalias vasculares e tratamentos não-cirúrgicos." },
+      { name: "description", content: "Procedimentos realizados pela Dra. Rebecca Rossener: cirurgia plástica pediátrica, reparadora e estética, em São Paulo e Taubaté." },
     ],
   }),
 });
