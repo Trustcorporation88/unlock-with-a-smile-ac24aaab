@@ -1,7 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Award, Heart, Shield, Sparkles, Stethoscope, ChevronDown, Quote } from "lucide-react";
+import { ArrowRight, Award, Heart, Shield, Sparkles, Stethoscope, ChevronDown, Quote, PlayCircle } from "lucide-react";
 import { Medallion } from "@/components/site/Medallion";
 import { Button } from "@/components/ui/button";
+import video1 from "@/assets/mensagem-dra-rebecca-1.mp4.asset.json";
+import video2 from "@/assets/mensagem-dra-rebecca-2.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -228,6 +230,46 @@ function HomePage() {
             <Button asChild size="lg" className="rounded-full px-6">
               <Link to="/agendamento">Iniciar minha jornada <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* MENSAGEM DA DRA — VÍDEOS */}
+      <section className="border-y border-border bg-surface/40">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-primary">
+              <PlayCircle className="h-3.5 w-3.5" /> Mensagem da Dra.
+            </p>
+            <h2 className="mt-3 font-serif text-4xl md:text-5xl">
+              Uma conversa <em className="text-primary">direta</em> com você
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Em poucos minutos, a Dra. Rebecca compartilha sua visão sobre cirurgia plástica,
+              ética e o cuidado individualizado em cada fase da vida.
+            </p>
+          </div>
+          <div className="mx-auto mt-12 grid max-w-4xl gap-8 md:grid-cols-2">
+            {[
+              { src: video1.url, title: "Criança e adulto: uma visão completa", caption: "Por que ser cirurgiã plástica das duas fases da vida é expertise — não confusão." },
+              { src: video2.url, title: "Técnica, ética e cuidado", caption: "O que guia cada decisão clínica e cirúrgica no consultório." },
+            ].map((v) => (
+              <figure key={v.src} className="overflow-hidden rounded-2xl border border-border bg-card">
+                <div className="aspect-[9/16] w-full bg-black">
+                  <video
+                    src={v.src}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <figcaption className="p-5">
+                  <p className="font-serif text-lg leading-snug text-card-foreground">{v.title}</p>
+                  <p className="mt-2 text-sm text-muted-foreground">{v.caption}</p>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
