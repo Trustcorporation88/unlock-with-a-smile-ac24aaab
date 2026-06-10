@@ -7,6 +7,9 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
+import { CONTACT } from "@/lib/contact";
+import { getWhatsAppLink } from "@/lib/whatsapp";
+
 
 export const Route = createFileRoute("/contato")({
   component: ContatoPage,
@@ -47,10 +50,10 @@ function ContatoPage() {
         <div className="space-y-5">
           <h2 className="font-serif text-3xl">Informações de Contato</h2>
           {[
-            { icon: MapPin, t: "Endereço", lines: ["Av. Fictícia, 123 — Sala 45", "Bairro Exemplo, São Paulo — SP", "CEP 00000-000"] },
-            { icon: Phone, t: "Telefone / WhatsApp", lines: ["(11) 99999-9999"] },
-            { icon: Mail, t: "E-mail", lines: ["contato@exemplo.com.br"] },
-            { icon: Clock, t: "Horário de Atendimento", lines: ["Segunda a Sexta: 8h às 18h", "Sábado: 8h às 13h"] },
+            { icon: MapPin, t: "Endereço", lines: [CONTACT.address.street, `${CONTACT.address.neighborhood}, ${CONTACT.address.city} — ${CONTACT.address.state}`, `CEP ${CONTACT.address.zip}`] },
+            { icon: Phone, t: "Telefone / WhatsApp", lines: [CONTACT.whatsappDisplay] },
+            { icon: Mail, t: "E-mail", lines: [CONTACT.email] },
+            { icon: Clock, t: "Horário de Atendimento", lines: [CONTACT.hours.weekdays, CONTACT.hours.saturday] },
           ].map((it) => (
             <div key={it.t} className="flex gap-4 rounded-2xl border border-border bg-card p-5">
               <it.icon className="mt-1 h-5 w-5 shrink-0 text-primary" />
@@ -61,7 +64,7 @@ function ContatoPage() {
             </div>
           ))}
           <Button asChild size="lg" className="w-full rounded-full bg-[#25D366] text-white hover:bg-[#1ebd5a]">
-            <a href="https://wa.me/55119999999999?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Dra.%20Rebecca%20Rossener." target="_blank" rel="noopener noreferrer">
+            <a href={getWhatsAppLink("/contato")} target="_blank" rel="noopener noreferrer">
               Falar pelo WhatsApp
             </a>
           </Button>

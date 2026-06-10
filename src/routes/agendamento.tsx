@@ -25,17 +25,18 @@ function AgendamentoPage() {
     setTimeout(() => {
       setLoading(false);
       (e.target as HTMLFormElement).reset();
-      toast.success("Recebemos sua solicitação! Entraremos em contato para confirmar.");
+      toast.success("Solicitação recebida — nossa equipe entrará em contato para confirmar o horário da sua avaliação.");
     }, 700);
   }
   return (
     <>
       <section className="bg-radial-glow">
         <div className="mx-auto max-w-7xl px-4 py-14 md:px-8 md:py-28">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary">Agendamento</p>
-          <h1 className="mt-3 max-w-3xl font-serif text-5xl md:text-6xl">Agende sua <em className="text-primary">consulta</em></h1>
+          <p className="text-xs uppercase tracking-[0.3em] text-primary">Agendamento · Particular</p>
+          <h1 className="mt-3 max-w-3xl font-serif text-5xl md:text-6xl">Solicite sua <em className="text-primary">avaliação particular</em></h1>
           <p className="mt-5 max-w-2xl text-muted-foreground">
-            Preencha o formulário abaixo e nossa equipe entrará em contato para confirmar o melhor horário.
+            Preencha o formulário abaixo. Esta é uma <strong>solicitação de horário</strong> —
+            nossa equipe entrará em contato para confirmar a melhor data para a sua avaliação.
           </p>
         </div>
       </section>
@@ -69,7 +70,7 @@ function AgendamentoPage() {
           </div>
           <div className="space-y-2"><Label htmlFor="motivo">Motivo da consulta</Label><Textarea id="motivo" rows={5} placeholder="Conte brevemente o que você gostaria de avaliar." /></div>
           <Button type="submit" size="lg" disabled={loading} className="w-full rounded-full">
-            {loading ? "Enviando..." : "Solicitar Agendamento"}
+            {loading ? "Enviando..." : "Solicitar avaliação particular"}
           </Button>
           <p className="text-xs text-muted-foreground">
             Seus dados são tratados com sigilo, conforme o Código de Ética Médica e a LGPD.
