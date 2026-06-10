@@ -51,14 +51,15 @@ function HomePage() {
         <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-10 md:grid-cols-2 md:px-8 md:py-16">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-primary">
-              <Award className="h-3.5 w-3.5" /> Formação USP · Membro SBCP · CRM-SP 176.098
+              <Award className="h-3.5 w-3.5" /> Formação USP · CRM-SP 176.098 · RQE 111.228
             </span>
             <h1 className="mt-5 text-balance font-serif text-4xl leading-[1.1] md:text-5xl lg:text-6xl">
-              Cirurgia plástica <em className="not-italic text-primary"><span className="italic">reparadora</span></em>, pediátrica e anomalias vasculares
+              Cirurgia plástica que entende <em className="not-italic text-primary"><span className="italic">a jornada inteira</span></em> — da infância à vida adulta
             </h1>
             <p className="mt-5 max-w-xl text-pretty text-base text-muted-foreground md:text-lg">
-              Formação pela USP e abordagem segura, humana e individualizada. Também atendo
-              estética facial e corporal — sempre com indicação honesta e planejamento cirúrgico criterioso.
+              Formada pela Faculdade de Medicina da USP, com residência em Cirurgia Geral e
+              especialização em Cirurgia Plástica no HC-FMUSP. Atendimento ético, individualizado
+              e baseado em evidências, em São Paulo e Taubaté.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" className="rounded-full px-6">
@@ -69,9 +70,9 @@ function HomePage() {
               </Button>
             </div>
             <div className="mt-10 flex flex-wrap gap-6 text-xs text-muted-foreground">
-              <span className="flex items-center gap-2"><Award className="h-4 w-4 text-primary" /> Formada pela USP</span>
-              <span className="flex items-center gap-2"><Shield className="h-4 w-4 text-primary" /> Membro SBCP</span>
-              <span className="flex items-center gap-2"><Heart className="h-4 w-4 text-primary" /> Especialista Pediátrica</span>
+              <span className="flex items-center gap-2"><Award className="h-4 w-4 text-primary" /> Medicina USP (2015)</span>
+              <span className="flex items-center gap-2"><Shield className="h-4 w-4 text-primary" /> Cirurgia Plástica HC-FMUSP (2023)</span>
+              <span className="flex items-center gap-2"><Heart className="h-4 w-4 text-primary" /> SickKids · Cleveland Clinic</span>
             </div>
           </div>
 
@@ -82,8 +83,8 @@ function HomePage() {
               <p className="font-serif text-sm">USP São Paulo</p>
             </div>
             <div className="absolute -bottom-4 right-2 rounded-2xl bg-card px-4 py-2.5 text-xs shadow-xl ring-1 ring-border md:-right-6">
-              <p className="text-muted-foreground">Especialidades</p>
-              <p className="font-serif text-sm font-semibold text-card-foreground">Reparadora · Pediátrica</p>
+              <p className="text-muted-foreground">Atuação</p>
+              <p className="font-serif text-sm font-semibold text-card-foreground">Pediátrica · Reparadora · Estética</p>
             </div>
           </div>
 
@@ -106,14 +107,17 @@ function HomePage() {
           </div>
           <div className="space-y-5 text-muted-foreground md:col-span-3">
             <p>
-              Formada pela Faculdade de Medicina da USP, a Dra. Rebecca Rossener entrou na medicina
-              com apenas 16 anos, sendo a primeira da família. Sua trajetória é marcada por expedições
-              cirúrgicas em regiões remotas do Brasil, pelo amor à cirurgia pediátrica e por um
-              propósito claro: fazer a diferença na vida de cada paciente.
+              Natural de <strong className="text-foreground">Taubaté (SP)</strong>, a Dra. Rebecca Rossener formou-se em
+              Medicina pela <strong className="text-foreground">Faculdade de Medicina da USP em 2015</strong>. Realizou
+              residência em Cirurgia Geral no <strong className="text-foreground">Hospital das Clínicas da FMUSP</strong> (2019)
+              e, em seguida, especialização em Cirurgia Plástica na mesma instituição (2023),
+              sob orientação do Prof. Dov Goldenberg.
             </p>
             <p>
-              Especialista em cirurgia reparadora, pediátrica e anomalias vasculares, ela combina
-              excelência técnica com um atendimento genuinamente humano e acolhedor.
+              Sua trajetória inclui ainda experiências internacionais no <strong className="text-foreground">Hospital for
+              Sick Children Foundation</strong> (Canadá) e no <strong className="text-foreground">Center for Reproductive
+              Medicine da Cleveland Clinic Foundation</strong> (EUA). Atua hoje com foco em resultados seguros,
+              éticos e individualizados — combinando técnica, estudo contínuo e respeito às particularidades de cada paciente.
             </p>
             <Button asChild variant="link" className="px-0 text-primary">
               <Link to="/sobre">Conheça minha história <ArrowRight className="ml-1 h-4 w-4" /></Link>
@@ -122,59 +126,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* MOBE — Modelagem de Orelha em Bebês */}
-      <section className="relative overflow-hidden">
-        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-16 md:grid-cols-2 md:px-8 md:py-24">
-          <div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-secondary/30 bg-secondary/10 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-secondary">
-              <Heart className="h-3.5 w-3.5" /> MOBE · Diferencial
-            </span>
-            <h2 className="mt-5 font-serif text-4xl leading-tight md:text-5xl">
-              Modelagem de Orelha em <em className="text-primary">Bebês</em>, sem cirurgia
-            </h2>
-            <p className="mt-5 text-muted-foreground">
-              Técnica indolor e não-cirúrgica para correção de deformidades da orelha em recém-nascidos,
-              utilizando moldes especiais aplicados nas primeiras semanas de vida. Quanto mais cedo iniciado
-              (idealmente até 3 semanas), melhores os resultados — evitando a otoplastia cirúrgica no futuro.
-            </p>
-            <ul className="mt-6 space-y-3 text-sm">
-              <li className="flex gap-3"><Sparkles className="h-4 w-4 shrink-0 text-primary" /> Sem dor, sem anestesia, sem incisões.</li>
-              <li className="flex gap-3"><Sparkles className="h-4 w-4 shrink-0 text-primary" /> Ideal entre 1 e 6 semanas de vida.</li>
-              <li className="flex gap-3"><Sparkles className="h-4 w-4 shrink-0 text-primary" /> Corrige orelhas em abano, dobradas, em copo, lop e Stahl.</li>
-              <li className="flex gap-3"><Sparkles className="h-4 w-4 shrink-0 text-primary" /> Acompanhamento próximo ao longo do tratamento.</li>
-            </ul>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Button asChild size="lg" className="rounded-full px-6">
-                <Link to="/contato">Falar sobre MOBE</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-full border-border bg-transparent">
-                <Link to="/procedimentos">Saiba mais</Link>
-              </Button>
-            </div>
-          </div>
-          <div className="relative">
-            <div className="rounded-3xl bg-gradient-to-br from-secondary/15 via-primary/10 to-transparent p-8 ring-1 ring-border">
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { n: "1–3", t: "semanas", d: "Janela ideal de início" },
-                  { n: "0", t: "cirurgia", d: "Tratamento não invasivo" },
-                  { n: "4–6", t: "semanas", d: "Duração média do tratamento" },
-                  { n: "90%+", t: "eficácia", d: "Quando iniciado precocemente" },
-                ].map((s) => (
-                  <div key={s.t} className="rounded-2xl bg-card p-5 ring-1 ring-border">
-                    <p className="font-serif text-3xl text-primary">{s.n}</p>
-                    <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">{s.t}</p>
-                    <p className="mt-2 text-xs text-muted-foreground">{s.d}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="mt-6 text-center text-xs text-muted-foreground">
-                Pais e pediatras: se notarem alteração no formato da orelha do bebê, procurem avaliação o quanto antes.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ESPECIALIDADES */}
       <section className="mx-auto max-w-7xl px-4 py-16 md:px-8">
