@@ -44,7 +44,7 @@ function SobrePage() {
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <span className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-xs"><GraduationCap className="h-4 w-4 text-primary" /> USP — Faculdade de Medicina</span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-xs"><Award className="h-4 w-4 text-primary" /> Membro SBCP</span>
+              <span className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-xs"><Stethoscope className="h-4 w-4 text-primary" /> CRM-SP 176.098 · RQE 111.228</span>
             </div>
           </div>
           <Medallion className="mx-auto aspect-square w-full max-w-[480px]" />
@@ -99,17 +99,17 @@ function SobrePage() {
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-2">
             <div className="flex items-start gap-3 rounded-2xl border border-border bg-card p-5">
-              <Award className="mt-1 h-5 w-5 text-primary" />
+              <GraduationCap className="mt-1 h-5 w-5 text-primary" />
               <div>
-                <p className="text-xs uppercase tracking-[0.25em] text-primary">SBCP</p>
-                <p className="mt-1 font-serif text-lg">Membro Titular da Sociedade Brasileira de Cirurgia Plástica</p>
+                <p className="text-xs uppercase tracking-[0.25em] text-primary">Formação</p>
+                <p className="mt-1 font-serif text-lg">Medicina pela Faculdade de Medicina da USP (2015)</p>
               </div>
             </div>
             <div className="flex items-start gap-3 rounded-2xl border border-border bg-card p-5">
               <Stethoscope className="mt-1 h-5 w-5 text-primary" />
               <div>
-                <p className="text-xs uppercase tracking-[0.25em] text-primary">CRM/SP</p>
-                <p className="mt-1 font-serif text-lg">CRM 176.098 · RQE 111.228</p>
+                <p className="text-xs uppercase tracking-[0.25em] text-primary">Registro Profissional</p>
+                <p className="mt-1 font-serif text-lg">CRM-SP 176.098 · RQE 111.228</p>
               </div>
             </div>
           </div>

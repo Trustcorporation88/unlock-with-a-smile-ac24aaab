@@ -13,27 +13,30 @@ import { SiteHeader } from "@/components/site/Header";
 import { SiteFooter } from "@/components/site/Footer";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 import { Toaster } from "@/components/ui/sonner";
-import { CONTACT, ADDRESS_ONE_LINE } from "@/lib/contact";
+import { CONTACT, CITIES_ONE_LINE } from "@/lib/contact";
 
 const physicianSchema = {
   "@context": "https://schema.org",
   "@type": "Physician",
   name: CONTACT.doctor.name,
-  medicalSpecialty: ["PlasticSurgery", "Pediatric"],
+  medicalSpecialty: ["PlasticSurgery"],
   url: "https://unlock-with-a-smile.lovable.app",
   telephone: `+${CONTACT.whatsappNumber}`,
-  email: CONTACT.email,
+  ...(CONTACT.email ? { email: CONTACT.email } : {}),
   sameAs: [CONTACT.social.instagram],
-  address: {
+  address: CONTACT.cities.map((city) => ({
     "@type": "PostalAddress",
-    streetAddress: CONTACT.address.street,
-    addressLocality: CONTACT.address.city,
-    addressRegion: CONTACT.address.state,
-    postalCode: CONTACT.address.zip,
-    addressCountry: CONTACT.address.country,
+    addressLocality: city.replace(/ —.*$/, ""),
+    addressRegion: CONTACT.state,
+    addressCountry: CONTACT.country,
+  })),
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: CONTACT.doctor.formation,
   },
-  description: `${CONTACT.doctor.specialty} — ${CONTACT.doctor.crm} · ${CONTACT.doctor.rqe}. Cirurgia reparadora, pediátrica, anomalias vasculares e estética em ${CONTACT.address.city}.`,
+  description: `${CONTACT.doctor.specialty} — ${CONTACT.doctor.crm} · ${CONTACT.doctor.rqe}. Formação pela USP, com atuação em cirurgia plástica reparadora, pediátrica e estética. Atendimento em ${CITIES_ONE_LINE}.`,
 };
+
 
 function NotFoundComponent() {
   return (
@@ -87,14 +90,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Dra. Rebecca Rossener — Cirurgia Plástica em São Paulo" },
-      { name: "description", content: "Cirurgia plástica estética, reparadora e pediátrica em São Paulo. Formada pela USP, membro da SBCP. Atendimento humanizado e resultados naturais." },
+      { name: "description", content: "Cirurgia plástica em São Paulo e Taubaté. Formação pela Faculdade de Medicina da USP, com residência e especialização no HC-FMUSP. Atendimento ético, individualizado e baseado em evidências." },
       { name: "author", content: "Dra. Rebecca Rossener" },
       { property: "og:title", content: "Dra. Rebecca Rossener — Cirurgia Plástica em São Paulo" },
-      { property: "og:description", content: "Cirurgia plástica estética, reparadora e pediátrica em São Paulo. Formada pela USP, membro da SBCP. Atendimento humanizado e resultados naturais." },
+      { property: "og:description", content: "Cirurgia plástica em São Paulo e Taubaté. Formada pela USP, com residência em Cirurgia Geral e especialização em Cirurgia Plástica no HC-FMUSP." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Dra. Rebecca Rossener — Cirurgia Plástica em São Paulo" },
-      { name: "twitter:description", content: "Cirurgia plástica estética, reparadora e pediátrica em São Paulo. Formada pela USP, membro da SBCP. Atendimento humanizado e resultados naturais." },
+      { name: "twitter:description", content: "Cirurgia plástica em São Paulo e Taubaté. Formada pela USP, com residência e especialização no HC-FMUSP." },
       { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/61c357eb-af1f-4d44-9314-2deb972b95f4/id-preview-83ecfed9--c2b3d902-75ac-416e-af02-449358b27440.lovable.app-1779408588109.png" },
       { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/61c357eb-af1f-4d44-9314-2deb972b95f4/id-preview-83ecfed9--c2b3d902-75ac-416e-af02-449358b27440.lovable.app-1779408588109.png" },
     ],

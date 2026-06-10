@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Mail, MapPin, Phone } from "lucide-react";
-import { CONTACT, ADDRESS_ONE_LINE } from "@/lib/contact";
+import { CONTACT, CITIES_ONE_LINE } from "@/lib/contact";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 
 export function SiteFooter() {
@@ -44,9 +44,11 @@ export function SiteFooter() {
         <div>
           <h4 className="font-serif text-base">Contato</h4>
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
-            <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />{ADDRESS_ONE_LINE}</li>
+            <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />Atendimento em {CITIES_ONE_LINE}</li>
             <li className="flex gap-2"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={getWhatsAppLink("/contato")} target="_blank" rel="noopener noreferrer" className="hover:text-primary">{CONTACT.whatsappDisplay}</a></li>
-            <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={`mailto:${CONTACT.email}`} className="hover:text-primary">{CONTACT.email}</a></li>
+            {CONTACT.email ? (
+              <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><a href={`mailto:${CONTACT.email}`} className="hover:text-primary">{CONTACT.email}</a></li>
+            ) : null}
           </ul>
         </div>
       </div>

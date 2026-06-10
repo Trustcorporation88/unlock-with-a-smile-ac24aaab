@@ -8,26 +8,23 @@ export const Route = createFileRoute("/procedimentos")({
   head: () => ({
     meta: [
       { title: "Procedimentos — Dra. Rebecca Rossener" },
-      { name: "description", content: "Conheça os procedimentos realizados pela Dra. Rebecca Rossener: cirurgia facial, corporal, pediátrica, anomalias vasculares e tratamentos não-cirúrgicos." },
+      { name: "description", content: "Procedimentos realizados pela Dra. Rebecca Rossener: cirurgia plástica pediátrica, reparadora e estética, em São Paulo e Taubaté." },
     ],
   }),
 });
 
-type Category = "Todos" | "Pediátrica" | "Anomalias Vasculares" | "Reparadora" | "Estética" | "MOBE";
-const categories: Category[] = ["Todos", "Pediátrica", "Anomalias Vasculares", "Reparadora", "Estética", "MOBE"];
+type Category = "Todos" | "Pediátrica" | "Reparadora" | "Estética";
+const categories: Category[] = ["Todos", "Pediátrica", "Reparadora", "Estética"];
 
 const procedures: { name: string; category: Exclude<Category, "Todos">; desc: string }[] = [
-  { name: "MOBE — Modelagem de Orelha em Bebês", category: "MOBE", desc: "Correção não-cirúrgica de deformidades da orelha em recém-nascidos com moldes especiais, idealmente iniciada entre 1 e 6 semanas de vida. Evita a otoplastia futura." },
   { name: "Otoplastia (Orelha em Abano)", category: "Pediátrica", desc: "Correção cirúrgica de orelhas em abano em crianças e adultos, com técnica delicada e cicatrizes discretas atrás da orelha." },
   { name: "Cirurgia Pediátrica Reparadora", category: "Pediátrica", desc: "Procedimentos reparadores em bebês e crianças realizados com técnica precisa, cuidado humanizado e equipe pediátrica especializada." },
-  { name: "Hemangiomas Infantis", category: "Anomalias Vasculares", desc: "Avaliação e tratamento de hemangiomas em bebês e crianças, com seguimento clínico e cirúrgico quando indicado." },
-  { name: "Malformações Vasculares", category: "Anomalias Vasculares", desc: "Abordagem multidisciplinar de malformações vasculares — venosas, linfáticas e capilares — em crianças e adultos." },
   { name: "Reconstrução de Cicatrizes", category: "Reparadora", desc: "Tratamento de cicatrizes hipertróficas, queloides e sequelas pós-traumáticas, com técnicas avançadas de revisão cicatricial." },
   { name: "Cirurgia Pós-Trauma", category: "Reparadora", desc: "Reparação de defeitos faciais e corporais após acidentes, mordeduras ou ressecções oncológicas." },
   { name: "Reconstrução Mamária", category: "Reparadora", desc: "Reconstrução mamária pós-mastectomia com técnicas modernas e planejamento individualizado." },
   { name: "Rinoplastia", category: "Estética", desc: "Cirurgia do nariz para harmonização estética e/ou funcional, com resultado natural e respeito à anatomia." },
   { name: "Blefaroplastia", category: "Estética", desc: "Cirurgia das pálpebras para rejuvenescimento do olhar, removendo excesso de pele e bolsas." },
-  { name: "Mamoplastia", category: "Estética", desc: "Aumento, redução ou levantamento das mamas com planejamento personalizado e implantes de alta qualidade." },
+  { name: "Mamoplastia", category: "Estética", desc: "Aumento, redução ou levantamento das mamas com planejamento personalizado." },
   { name: "Abdominoplastia", category: "Estética", desc: "Remodelagem do abdômen com remoção de pele e correção da musculatura — comum no pós-gestação." },
   { name: "Lipoaspiração", category: "Estética", desc: "Contorno corporal com remoção localizada de gordura, com técnicas modernas e recuperação otimizada." },
 ];
@@ -67,17 +64,11 @@ function ProceduresPage() {
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {list.map((p) => {
             const slug =
-              p.category === "Pediátrica" || p.category === "MOBE"
-                ? p.category === "MOBE"
-                  ? "otoplastia-modelagem"
-                  : p.name.toLowerCase().includes("otoplastia")
-                    ? "otoplastia-modelagem"
-                    : "cirurgia-pediatrica"
-                : p.category === "Anomalias Vasculares"
-                  ? "anomalias-vasculares"
-                  : p.category === "Reparadora"
-                    ? "reparadora"
-                    : "estetica";
+              p.category === "Pediátrica"
+                ? "cirurgia-pediatrica"
+                : p.category === "Reparadora"
+                  ? "reparadora"
+                  : "estetica";
             return (
               <Link
                 key={p.name}
