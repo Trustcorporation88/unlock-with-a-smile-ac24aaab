@@ -1,7 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Award, Heart, Shield, Sparkles, Stethoscope, ChevronDown, Quote } from "lucide-react";
+import { ArrowRight, Award, Heart, Shield, Sparkles, Stethoscope, ChevronDown, Quote, PlayCircle, ExternalLink } from "lucide-react";
 import { Medallion } from "@/components/site/Medallion";
 import { Button } from "@/components/ui/button";
+import video1 from "@/assets/mensagem-dra-rebecca-1.mp4.asset.json";
+import video2 from "@/assets/mensagem-dra-rebecca-2.mp4.asset.json";
+
+const ARTICLE_URL = "https://calonexp.com/dra-rebecca-rossener-participa-do-biografia-documentario-e-destaca-a-cirurgia-plastica-como-uniao-entre-tecnica-etica-e-cuidado-individualizado/";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
@@ -179,6 +183,48 @@ function HomePage() {
             <Button asChild size="lg" className="rounded-full px-6">
               <Link to="/agendamento">Iniciar minha jornada <ArrowRight className="ml-2 h-4 w-4" /></Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* MENSAGEM DA DRA. — VÍDEOS */}
+      <section className="border-y border-border bg-surface/40">
+        <div className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-primary">
+              <PlayCircle className="h-4 w-4" /> Mensagem da Dra.
+            </p>
+            <h2 className="mt-3 font-serif text-4xl md:text-5xl">
+              Uma conversa <em className="text-primary">direta</em> com você
+            </h2>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Falas da Dra. Rebecca Rossener sobre técnica, ética e cuidado individualizado em
+              cirurgia plástica.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {[video1, video2].map((v, i) => (
+              <figure key={i} className="overflow-hidden rounded-2xl border border-border bg-black">
+                <video
+                  src={v.url}
+                  controls
+                  preload="none"
+                  playsInline
+                  className="aspect-video w-full bg-black"
+                />
+              </figure>
+            ))}
+          </div>
+          <div className="mt-8 text-center">
+            <a
+              href={ARTICLE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm text-primary underline-offset-4 hover:underline"
+            >
+              Leia a matéria completa na CALONE® XP
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
           </div>
         </div>
       </section>
