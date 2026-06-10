@@ -14,10 +14,10 @@ export const Route = createFileRoute("/")({
 });
 
 const specialties = [
-  { title: "Estética Facial", desc: "Rinoplastia, blefaroplastia, lifting facial e harmonização cirúrgica.", icon: Sparkles },
-  { title: "Cirurgia Corporal", desc: "Mamoplastia, abdominoplastia, lipoaspiração e contorno corporal.", icon: Heart },
-  { title: "Pediátrica", desc: "Cirurgias reparadoras em crianças com técnica e cuidado especializado.", icon: Shield },
-  { title: "Anomalias Vasculares", desc: "Tratamento cirúrgico de hemangiomas e malformações vasculares.", icon: Stethoscope },
+  { title: "Cirurgia Reparadora", desc: "Reconstrução de mama, pós-bariátrica, sequelas de trauma e cicatrizes complexas.", icon: Shield },
+  { title: "Cirurgia Pediátrica", desc: "Cirurgia plástica infantil com técnica delicada e atendimento especializado para crianças.", icon: Heart },
+  { title: "Anomalias Vasculares", desc: "Tratamento de hemangiomas, malformações vasculares e linfáticas, em adultos e crianças.", icon: Stethoscope },
+  { title: "Estética Facial e Corporal", desc: "Rinoplastia, blefaroplastia, mamoplastia, abdominoplastia e contorno corporal.", icon: Sparkles },
 ];
 
 const journey = [
@@ -49,18 +49,18 @@ function HomePage() {
         <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 py-10 md:grid-cols-2 md:px-8 md:py-16">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-primary">
-              <Award className="h-3.5 w-3.5" /> Formada pela USP · Membro SBCP
+              <Award className="h-3.5 w-3.5" /> Formação USP · Membro SBCP · CRM-SP 176.098
             </span>
             <h1 className="mt-5 text-balance font-serif text-4xl leading-[1.1] md:text-5xl lg:text-6xl">
-              Cirurgia Plástica com <em className="not-italic text-primary"><span className="italic">Excelência</span></em> e Cuidado Humano
+              Cirurgia plástica <em className="not-italic text-primary"><span className="italic">reparadora</span></em>, pediátrica e anomalias vasculares
             </h1>
             <p className="mt-5 max-w-xl text-pretty text-base text-muted-foreground md:text-lg">
-              Especialista em cirurgia estética, reparadora, pediátrica e anomalias vasculares.
-              Resultados naturais, atendimento acolhedor e segurança em cada etapa da sua jornada.
+              Formação pela USP e abordagem segura, humana e individualizada. Também atendo
+              estética facial e corporal — sempre com indicação honesta e planejamento cirúrgico criterioso.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" className="rounded-full px-6">
-                <Link to="/agendamento">Agendar Consulta <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                <Link to="/agendamento">Agendar avaliação particular <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="rounded-full border-border bg-transparent px-6 text-foreground hover:bg-muted/60">
                 <Link to="/procedimentos">Ver Procedimentos</Link>
