@@ -49,12 +49,12 @@ function ContatoPage() {
       <section className="mx-auto grid max-w-7xl gap-10 px-4 py-14 md:grid-cols-2 md:px-8">
         <div className="space-y-5">
           <h2 className="font-serif text-3xl">Informações de Contato</h2>
-          {[
-            { icon: MapPin, t: "Endereço", lines: [CONTACT.address.street, `${CONTACT.address.neighborhood}, ${CONTACT.address.city} — ${CONTACT.address.state}`, `CEP ${CONTACT.address.zip}`] },
+          {([
+            { icon: MapPin, t: "Atendimento", lines: [...CONTACT.cities] },
             { icon: Phone, t: "Telefone / WhatsApp", lines: [CONTACT.whatsappDisplay] },
-            { icon: Mail, t: "E-mail", lines: [CONTACT.email] },
+            ...(CONTACT.email ? [{ icon: Mail, t: "E-mail", lines: [CONTACT.email] }] : []),
             { icon: Clock, t: "Horário de Atendimento", lines: [CONTACT.hours.weekdays, CONTACT.hours.saturday] },
-          ].map((it) => (
+          ] as { icon: typeof MapPin; t: string; lines: string[] }[]).map((it) => (
             <div key={it.t} className="flex gap-4 rounded-2xl border border-border bg-card p-5">
               <it.icon className="mt-1 h-5 w-5 shrink-0 text-primary" />
               <div>
