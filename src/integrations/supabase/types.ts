@@ -14,7 +14,72 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      appointments: {
+        Row: {
+          created_at: string
+          date: string
+          email: string
+          id: string
+          lgpd_consent: boolean
+          name: string
+          notes: string | null
+          procedure: string | null
+          status: string
+          time: string
+          whatsapp: string
+        }
+        Insert: {
+          created_at?: string
+          date: string
+          email: string
+          id?: string
+          lgpd_consent?: boolean
+          name: string
+          notes?: string | null
+          procedure?: string | null
+          status?: string
+          time: string
+          whatsapp: string
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          email?: string
+          id?: string
+          lgpd_consent?: boolean
+          name?: string
+          notes?: string | null
+          procedure?: string | null
+          status?: string
+          time?: string
+          whatsapp?: string
+        }
+        Relationships: []
+      }
+      blocked_slots: {
+        Row: {
+          created_at: string
+          date: string
+          id: string
+          reason: string
+          time: string
+        }
+        Insert: {
+          created_at?: string
+          date: string
+          id?: string
+          reason: string
+          time: string
+        }
+        Update: {
+          created_at?: string
+          date?: string
+          id?: string
+          reason?: string
+          time?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
