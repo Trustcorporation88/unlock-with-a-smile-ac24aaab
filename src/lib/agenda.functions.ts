@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
+import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
 
 const SLOT_TIMES = [
   "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
@@ -33,6 +34,18 @@ function isValidSlotForDate(iso: string, time: string): boolean {
 
 function normTime(t: string) {
   return t.slice(0, 5);
+}
+
+async function assertAdmin(userId: string) {
+  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+  const { data, error } = await supabaseAdmin
+    .from("user_roles")
+    .select("role")
+    .eq("user_id", userId)
+    .eq("role", "admin")
+    .maybeSingle();
+  if (error) throw new Error(error.message);
+  if (!data) throw new Error("Acesso restrito à secretaria.");
 }
 
 // ==================== PÚBLICO ====================
@@ -100,7 +113,6 @@ export const createAppointment = createServerFn({ method: "POST" })
     if (!isValidSlotForDate(data.date, data.time)) {
       throw new Error("Horário fora da grade de atendimento.");
     }
-    // Mínimo de 24h de antecedência
     const [y, m, d] = data.date.split("-").map(Number);
     const [hh, mm] = data.time.split(":").map(Number);
     const when = new Date(y, m - 1, d, hh, mm).getTime();
@@ -114,7 +126,6 @@ export const createAppointment = createServerFn({ method: "POST" })
 
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
-    // Bloqueio ativo?
     const { data: blk } = await supabaseAdmin
       .from("blocked_slots")
       .select("id")
@@ -123,7 +134,6 @@ export const createAppointment = createServerFn({ method: "POST" })
       .maybeSingle();
     if (blk) throw new Error("Este horário acabou de ficar indisponível");
 
-    // Já ocupado?
     const { data: taken } = await supabaseAdmin
       .from("appointments")
       .select("id")
@@ -153,27 +163,22 @@ export const createAppointment = createServerFn({ method: "POST" })
     return { ok: true as const };
   });
 
-// ==================== SECRETARIA (código-gate) ====================
+// ==================== SECRETARIA (admin autenticado) ====================
 
-async function assertSecretariaCode(code: string) {
-  const expected = process.env.SECRETARIA_CODE;
-  if (!expected) throw new Error("Código da secretaria não configurado no servidor.");
-  if (code !== expected) throw new Error("Código de acesso inválido.");
-}
-
-export const secretariaLogin = createServerFn({ method: "POST" })
-  .inputValidator((data: { code: string }) => z.object({ code: z.string() }).parse(data))
-  .handler(async ({ data }) => {
-    await assertSecretariaCode(data.code);
+export const checkAdmin = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
+  .handler(async ({ context }) => {
+    await assertAdmin(context.userId);
     return { ok: true as const };
   });
 
 export const secretariaListWeek = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
   .inputValidator((data: unknown) =>
-    z.object({ code: z.string(), start: z.string(), end: z.string() }).parse(data),
+    z.object({ start: z.string(), end: z.string() }).parse(data),
   )
-  .handler(async ({ data }) => {
-    await assertSecretariaCode(data.code);
+  .handler(async ({ data, context }) => {
+    await assertAdmin(context.userId);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
     const [{ data: blocks }, { data: appts }] = await Promise.all([
@@ -199,20 +204,19 @@ export const secretariaListWeek = createServerFn({ method: "POST" })
   });
 
 export const secretariaBlockSlot = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
   .inputValidator((data: unknown) =>
     z
       .object({
-        code: z.string(),
         date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
         time: z.string().regex(/^\d{2}:\d{2}$/),
         reason: z.enum(["cirurgia", "viagem"]),
       })
       .parse(data),
   )
-  .handler(async ({ data }) => {
-    await assertSecretariaCode(data.code);
+  .handler(async ({ data, context }) => {
+    await assertAdmin(context.userId);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    // upsert manual: se existe, atualiza motivo; senão insere.
     const { data: exists } = await supabaseAdmin
       .from("blocked_slots")
       .select("id")
@@ -235,17 +239,12 @@ export const secretariaBlockSlot = createServerFn({ method: "POST" })
   });
 
 export const secretariaUnblockSlot = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
   .inputValidator((data: unknown) =>
-    z
-      .object({
-        code: z.string(),
-        date: z.string(),
-        time: z.string(),
-      })
-      .parse(data),
+    z.object({ date: z.string(), time: z.string() }).parse(data),
   )
-  .handler(async ({ data }) => {
-    await assertSecretariaCode(data.code);
+  .handler(async ({ data, context }) => {
+    await assertAdmin(context.userId);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { error } = await supabaseAdmin
       .from("blocked_slots")
@@ -257,17 +256,17 @@ export const secretariaUnblockSlot = createServerFn({ method: "POST" })
   });
 
 export const secretariaUpdateAppointmentStatus = createServerFn({ method: "POST" })
+  .middleware([requireSupabaseAuth])
   .inputValidator((data: unknown) =>
     z
       .object({
-        code: z.string(),
         id: z.string().uuid(),
         status: z.enum(["aguardando", "confirmada", "cancelada"]),
       })
       .parse(data),
   )
-  .handler(async ({ data }) => {
-    await assertSecretariaCode(data.code);
+  .handler(async ({ data, context }) => {
+    await assertAdmin(context.userId);
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
     const { error } = await supabaseAdmin
       .from("appointments")

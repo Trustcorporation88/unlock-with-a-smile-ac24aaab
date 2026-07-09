@@ -6,14 +6,15 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { addDays, formatBR, formatBRFull, isWorkingDay, toISODate, weekDates } from "@/lib/agenda";
 import {
+  checkAdmin,
   secretariaBlockSlot,
   secretariaListWeek,
-  secretariaLogin,
   secretariaUnblockSlot,
   secretariaUpdateAppointmentStatus,
 } from "@/lib/agenda.functions";
 import { useServerFn } from "@tanstack/react-start";
-import { WHATSAPP_NUMBER } from "@/lib/whatsapp";
+import { supabase } from "@/integrations/supabase/client";
+import { Scissors, Plane, LogOut } from "lucide-react";
 
 export const Route = createFileRoute("/secretaria")({
   component: SecretariaPage,
@@ -33,17 +34,25 @@ type Appt = {
 };
 type WeekData = { slotTimes: string[]; blocks: Block[]; appointments: Appt[] };
 
+function firstName(n: string) {
+  return n.trim().split(/\s+/)[0] ?? n;
+}
+
 function SecretariaPage() {
-  const login = useServerFn(secretariaLogin);
   const listWeek = useServerFn(secretariaListWeek);
   const blockSlot = useServerFn(secretariaBlockSlot);
   const unblockSlot = useServerFn(secretariaUnblockSlot);
   const updateStatus = useServerFn(secretariaUpdateAppointmentStatus);
+  const verifyAdmin = useServerFn(checkAdmin);
 
-  const [code, setCode] = useState("");
   const [authed, setAuthed] = useState(false);
+  const [checking, setChecking] = useState(true);
+  const [mode, setMode] = useState<"login" | "signup">("login");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+
   const [reason, setReason] = useState<"cirurgia" | "viagem">("cirurgia");
-  // Começa na próxima semana (offset 1) conforme pedido
   const [weekOffset, setWeekOffset] = useState(1);
   const [data, setData] = useState<WeekData | null>(null);
   const [loading, setLoading] = useState(false);
@@ -55,10 +64,31 @@ function SecretariaPage() {
   const rangeStart = toISODate(days[0]);
   const rangeEnd = toISODate(days[days.length - 1]);
 
+  // On mount, check if there's a session and it's admin
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const { data: sess } = await supabase.auth.getSession();
+      if (!sess.session) {
+        if (!cancelled) setChecking(false);
+        return;
+      }
+      try {
+        await verifyAdmin();
+        if (!cancelled) setAuthed(true);
+      } catch {
+        await supabase.auth.signOut();
+      } finally {
+        if (!cancelled) setChecking(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [verifyAdmin]);
+
   const refresh = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await listWeek({ data: { code, start: rangeStart, end: rangeEnd } });
+      const res = await listWeek({ data: { start: rangeStart, end: rangeEnd } });
       setData(res as WeekData);
     } catch (err: unknown) {
       const msg = err instanceof Error ? err.message : "Erro ao carregar agenda.";
@@ -66,21 +96,44 @@ function SecretariaPage() {
     } finally {
       setLoading(false);
     }
-  }, [code, rangeStart, rangeEnd, listWeek]);
+  }, [rangeStart, rangeEnd, listWeek]);
 
   useEffect(() => {
     if (authed) refresh();
   }, [authed, refresh]);
 
-  async function onLogin(e: React.FormEvent) {
+  async function onAuth(e: React.FormEvent) {
     e.preventDefault();
+    setSubmitting(true);
     try {
-      await login({ data: { code } });
+      if (mode === "signup") {
+        const { error } = await supabase.auth.signUp({
+          email,
+          password,
+          options: { emailRedirectTo: `${window.location.origin}/secretaria` },
+        });
+        if (error) throw error;
+      } else {
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+      }
+      await verifyAdmin();
       setAuthed(true);
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "Código inválido.";
+      const msg = err instanceof Error ? err.message : "Falha na autenticação.";
       toast.error(msg);
+      await supabase.auth.signOut().catch(() => {});
+    } finally {
+      setSubmitting(false);
     }
+  }
+
+  async function onLogout() {
+    await supabase.auth.signOut();
+    setAuthed(false);
+    setData(null);
+    setEmail("");
+    setPassword("");
   }
 
   function findBlock(date: string, time: string) {
@@ -90,16 +143,16 @@ function SecretariaPage() {
     return data?.appointments.find((a) => a.date === date && a.time === time && a.status !== "cancelada");
   }
 
-  async function onToggleSlot(date: string, time: string) {
+  async function onCellClick(date: string, time: string) {
     const appt = findAppt(date, time);
     if (appt) { toast.error("Este horário tem consulta ativa."); return; }
     const block = findBlock(date, time);
     try {
       if (block) {
-        await unblockSlot({ data: { code, date, time } });
+        await unblockSlot({ data: { date, time } });
         toast.success("Bloqueio removido.");
       } else {
-        await blockSlot({ data: { code, date, time, reason } });
+        await blockSlot({ data: { date, time, reason } });
         toast.success(`Bloqueado como ${reason}.`);
       }
       await refresh();
@@ -109,36 +162,69 @@ function SecretariaPage() {
     }
   }
 
-  async function onUpdateAppt(id: string, status: "confirmada" | "cancelada") {
+  async function onConfirm(id: string) {
     try {
-      await updateStatus({ data: { code, id, status } });
-      toast.success(status === "confirmada" ? "Consulta confirmada." : "Consulta cancelada.");
+      await updateStatus({ data: { id, status: "confirmada" } });
+      toast.success("Consulta confirmada.");
       await refresh();
     } catch (err: unknown) {
-      const msg = err instanceof Error ? err.message : "Erro.";
-      toast.error(msg);
+      toast.error(err instanceof Error ? err.message : "Erro.");
+    }
+  }
+
+  async function onCancel(id: string) {
+    if (!confirm("Cancelar esta consulta? O horário voltará a ficar livre.")) return;
+    try {
+      await updateStatus({ data: { id, status: "cancelada" } });
+      toast.success("Consulta cancelada.");
+      await refresh();
+    } catch (err: unknown) {
+      toast.error(err instanceof Error ? err.message : "Erro.");
     }
   }
 
   function waLink(appt: Appt) {
     const dateBR = formatBRFull(new Date(appt.date + "T00:00:00"));
-    const msg = `Olá, ${appt.name}! Aqui é da equipe da Dra. Rebecca Rossener. Confirmo sua consulta para ${dateBR} às ${appt.time}. Podemos confirmar sua presença?`;
+    const msg = `Olá ${firstName(appt.name)}, aqui é do consultório da Dra. Rebecca Rossener. Podemos confirmar sua consulta de ${dateBR} às ${appt.time}? Responda CONFIRMAR.`;
     const digits = appt.whatsapp.replace(/\D/g, "");
     const num = digits.startsWith("55") ? digits : `55${digits}`;
     return `https://wa.me/${num}?text=${encodeURIComponent(msg)}`;
+  }
+
+  if (checking) {
+    return (
+      <section className="mx-auto max-w-md px-4 py-24 md:px-8">
+        <p className="text-sm text-muted-foreground">Carregando…</p>
+      </section>
+    );
   }
 
   if (!authed) {
     return (
       <section className="mx-auto max-w-md px-4 py-24 md:px-8">
         <h1 className="font-serif text-3xl md:text-4xl">Área da secretaria</h1>
-        <p className="mt-2 text-sm text-muted-foreground">Digite o código de acesso.</p>
-        <form onSubmit={onLogin} className="mt-6 space-y-4 rounded-2xl border border-border bg-card p-6">
+        <p className="mt-2 text-sm text-muted-foreground">
+          Acesso restrito. Use suas credenciais de administrador.
+        </p>
+        <form onSubmit={onAuth} className="mt-6 space-y-4 rounded-2xl border border-border bg-card p-6">
           <div className="space-y-2">
-            <Label htmlFor="code">Código</Label>
-            <Input id="code" type="password" value={code} onChange={(e) => setCode(e.target.value)} required autoFocus />
+            <Label htmlFor="email">E-mail</Label>
+            <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required autoFocus autoComplete="email" />
           </div>
-          <Button type="submit" className="w-full">Entrar</Button>
+          <div className="space-y-2">
+            <Label htmlFor="password">Senha</Label>
+            <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required autoComplete={mode === "signup" ? "new-password" : "current-password"} minLength={6} />
+          </div>
+          <Button type="submit" className="w-full" disabled={submitting}>
+            {submitting ? "..." : mode === "signup" ? "Criar conta" : "Entrar"}
+          </Button>
+          <button
+            type="button"
+            onClick={() => setMode(mode === "signup" ? "login" : "signup")}
+            className="w-full text-center text-xs text-muted-foreground underline"
+          >
+            {mode === "signup" ? "Já tenho conta — entrar" : "Primeiro acesso? Criar conta de admin"}
+          </button>
         </form>
       </section>
     );
@@ -156,20 +242,23 @@ function SecretariaPage() {
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <div className="flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-sm">
-            <span className="text-muted-foreground">Bloquear como:</span>
+          <div className="flex items-center gap-1 rounded-full border border-border bg-card px-2 py-1 text-sm">
+            <span className="pl-2 pr-1 text-xs text-muted-foreground">Modo:</span>
             <button
               onClick={() => setReason("cirurgia")}
-              className={`rounded-full px-3 py-1 text-xs font-medium ${reason === "cirurgia" ? "bg-primary text-primary-foreground" : "text-muted-foreground"}`}
-            >Cirurgia</button>
+              className={`flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium ${reason === "cirurgia" ? "bg-primary text-primary-foreground" : "text-muted-foreground"}`}
+            ><Scissors className="h-3 w-3" />Cirurgia</button>
             <button
               onClick={() => setReason("viagem")}
-              className={`rounded-full px-3 py-1 text-xs font-medium ${reason === "viagem" ? "bg-primary text-primary-foreground" : "text-muted-foreground"}`}
-            >Viagem</button>
+              className={`flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium ${reason === "viagem" ? "bg-primary text-primary-foreground" : "text-muted-foreground"}`}
+            ><Plane className="h-3 w-3" />Viagem</button>
           </div>
           <Button size="sm" variant="outline" onClick={() => setWeekOffset((w) => w - 1)}>← Semana</Button>
           <Button size="sm" variant="outline" onClick={() => setWeekOffset((w) => w + 1)}>Semana →</Button>
           <Button size="sm" variant="outline" onClick={refresh} disabled={loading}>{loading ? "..." : "Atualizar"}</Button>
+          <Button size="sm" variant="ghost" onClick={onLogout} title="Sair">
+            <LogOut className="h-4 w-4" />
+          </Button>
         </div>
       </header>
 
@@ -194,30 +283,54 @@ function SecretariaPage() {
                   const iso = toISODate(d);
                   const block = findBlock(iso, t);
                   const appt = findAppt(iso, t);
-                  return (
-                    <td key={iso + t} className="p-1 text-center">
-                      {appt ? (
-                        <div className="rounded-md bg-primary/15 px-2 py-1 text-xs text-card-foreground">
-                          <div className="truncate font-medium">{appt.name}</div>
-                          <div className="text-[10px] text-muted-foreground capitalize">{appt.status}</div>
+                  if (appt) {
+                    const isConfirmed = appt.status === "confirmada";
+                    return (
+                      <td key={iso + t} className="p-1 text-center">
+                        <div
+                          className={
+                            "rounded-md px-2 py-1 text-xs " +
+                            (isConfirmed
+                              ? "bg-emerald-500/20 text-emerald-900 dark:text-emerald-200"
+                              : "bg-amber-500/20 text-amber-900 dark:text-amber-200")
+                          }
+                          title={`${appt.name} · ${appt.status}`}
+                        >
+                          <div className="truncate font-semibold">{firstName(appt.name)}</div>
+                          <div className="text-[10px] capitalize opacity-80">{appt.status}</div>
                         </div>
-                      ) : block ? (
+                      </td>
+                    );
+                  }
+                  if (block) {
+                    const Icon = block.reason === "cirurgia" ? Scissors : Plane;
+                    return (
+                      <td key={iso + t} className="p-1 text-center">
                         <button
-                          onClick={() => onToggleSlot(iso, t)}
-                          className="w-full rounded-md bg-destructive/20 px-2 py-1 text-xs text-destructive hover:bg-destructive/30 capitalize"
+                          onClick={() => onCellClick(iso, t)}
+                          className={
+                            "flex w-full items-center justify-center gap-1 rounded-md px-2 py-1 text-xs capitalize " +
+                            (block.reason === "cirurgia"
+                              ? "bg-rose-500/20 text-rose-900 hover:bg-rose-500/30 dark:text-rose-200"
+                              : "bg-indigo-500/20 text-indigo-900 hover:bg-indigo-500/30 dark:text-indigo-200")
+                          }
                           title="Clique para liberar"
                         >
+                          <Icon className="h-3 w-3" />
                           {block.reason}
                         </button>
-                      ) : (
-                        <button
-                          onClick={() => onToggleSlot(iso, t)}
-                          className="w-full rounded-md bg-background px-2 py-1 text-xs text-muted-foreground ring-1 ring-border hover:ring-primary"
-                          title={`Bloquear como ${reason}`}
-                        >
-                          livre
-                        </button>
-                      )}
+                      </td>
+                    );
+                  }
+                  return (
+                    <td key={iso + t} className="p-1 text-center">
+                      <button
+                        onClick={() => onCellClick(iso, t)}
+                        className="w-full rounded-md bg-background px-2 py-1 text-xs text-muted-foreground ring-1 ring-border hover:ring-primary"
+                        title={`Bloquear como ${reason}`}
+                      >
+                        Livre
+                      </button>
                     </td>
                   );
                 })}
@@ -243,13 +356,12 @@ function SecretariaPage() {
                     <p className="font-semibold text-card-foreground">{a.name}</p>
                     <span className={
                       "rounded-full px-2 py-0.5 text-xs font-medium capitalize " +
-                      (a.status === "confirmada" ? "bg-primary/15 text-primary" :
-                       a.status === "aguardando" ? "bg-amber-500/15 text-amber-700 dark:text-amber-400" :
-                       "bg-muted text-muted-foreground")
+                      (a.status === "confirmada" ? "bg-emerald-500/15 text-emerald-700 dark:text-emerald-300" :
+                       "bg-amber-500/15 text-amber-700 dark:text-amber-300")
                     }>{a.status}</span>
                   </div>
                   <p className="mt-1 text-xs text-muted-foreground">
-                    {formatBRFull(new Date(a.date + "T00:00:00"))} · {a.time} · {a.email} · {a.whatsapp}
+                    {formatBRFull(new Date(a.date + "T00:00:00"))} · {a.time} · {a.whatsapp}
                     {a.procedure ? ` · ${a.procedure}` : ""}
                   </p>
                 </div>
@@ -259,19 +371,15 @@ function SecretariaPage() {
                     className="rounded-full bg-[#25D366] px-4 py-2 text-xs font-semibold text-white hover:opacity-90"
                   >WhatsApp</a>
                   {a.status !== "confirmada" && (
-                    <Button size="sm" variant="outline" onClick={() => onUpdateAppt(a.id, "confirmada")}>Confirmar</Button>
+                    <Button size="sm" variant="outline" onClick={() => onConfirm(a.id)}>Confirmar</Button>
                   )}
-                  {a.status !== "cancelada" && (
-                    <Button size="sm" variant="ghost" onClick={() => onUpdateAppt(a.id, "cancelada")}>Cancelar</Button>
-                  )}
+                  <Button size="sm" variant="ghost" onClick={() => onCancel(a.id)}>Cancelar</Button>
                 </div>
               </div>
             ))}
           </div>
         )}
       </div>
-
-      <p className="mt-8 text-xs text-muted-foreground">WhatsApp da assessoria: {WHATSAPP_NUMBER}</p>
     </section>
   );
 }
