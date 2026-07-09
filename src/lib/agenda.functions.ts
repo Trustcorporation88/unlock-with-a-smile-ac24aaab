@@ -3,14 +3,32 @@ import { z } from "zod";
 
 const SLOT_TIMES = [
   "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
+  "12:00", "12:30",
   "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30",
 ];
+
+const WEEKDAY_TIMES = new Set([
+  "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
+  "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30",
+]);
+const SATURDAY_TIMES = new Set([
+  "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
+  "12:00", "12:30",
+]);
 
 function isWorkingDayISO(iso: string): boolean {
   const [y, m, d] = iso.split("-").map(Number);
   const dt = new Date(y, m - 1, d);
   const dow = dt.getDay();
   return dow >= 1 && dow <= 6;
+}
+
+function isValidSlotForDate(iso: string, time: string): boolean {
+  const [y, m, d] = iso.split("-").map(Number);
+  const dow = new Date(y, m - 1, d).getDay();
+  if (dow === 0) return false;
+  if (dow === 6) return SATURDAY_TIMES.has(time);
+  return WEEKDAY_TIMES.has(time);
 }
 
 function normTime(t: string) {
@@ -79,12 +97,19 @@ export const createAppointment = createServerFn({ method: "POST" })
     if (!isWorkingDayISO(data.date)) {
       throw new Error("Data indisponível: atendemos de segunda a sábado.");
     }
-    if (!SLOT_TIMES.includes(data.time)) {
+    if (!isValidSlotForDate(data.date, data.time)) {
       throw new Error("Horário fora da grade de atendimento.");
     }
+    // Mínimo de 24h de antecedência
+    const [y, m, d] = data.date.split("-").map(Number);
+    const [hh, mm] = data.time.split(":").map(Number);
+    const when = new Date(y, m - 1, d, hh, mm).getTime();
+    if (when < Date.now() + 24 * 60 * 60 * 1000) {
+      throw new Error("O agendamento deve ser feito com no mínimo 24h de antecedência.");
+    }
     const digits = data.whatsapp.replace(/\D/g, "");
-    if (digits.length !== 10 && digits.length !== 11) {
-      throw new Error("WhatsApp inválido: informe DDD + número.");
+    if (digits.length < 10 || digits.length > 13) {
+      throw new Error("WhatsApp inválido: informe DDD + número (10 a 13 dígitos).");
     }
 
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
@@ -96,7 +121,17 @@ export const createAppointment = createServerFn({ method: "POST" })
       .eq("date", data.date)
       .eq("time", data.time)
       .maybeSingle();
-    if (blk) throw new Error("Horário indisponível.");
+    if (blk) throw new Error("Este horário acabou de ficar indisponível");
+
+    // Já ocupado?
+    const { data: taken } = await supabaseAdmin
+      .from("appointments")
+      .select("id")
+      .eq("date", data.date)
+      .eq("time", data.time)
+      .neq("status", "cancelada")
+      .maybeSingle();
+    if (taken) throw new Error("Este horário acabou de ficar indisponível");
 
     const { error } = await supabaseAdmin.from("appointments").insert({
       name: data.name,
