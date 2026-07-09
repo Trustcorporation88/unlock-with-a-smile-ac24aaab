@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SobreRouteImport } from './routes/sobre'
+import { Route as SecretariaRouteImport } from './routes/secretaria'
 import { Route as ProcedimentosRouteImport } from './routes/procedimentos'
 import { Route as GaleriaRouteImport } from './routes/galeria'
 import { Route as FaqRouteImport } from './routes/faq'
@@ -22,6 +23,11 @@ import { Route as ProcedimentosSlugRouteImport } from './routes/procedimentos.$s
 const SobreRoute = SobreRouteImport.update({
   id: '/sobre',
   path: '/sobre',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SecretariaRoute = SecretariaRouteImport.update({
+  id: '/secretaria',
+  path: '/secretaria',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProcedimentosRoute = ProcedimentosRouteImport.update({
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/galeria': typeof GaleriaRoute
   '/procedimentos': typeof ProcedimentosRouteWithChildren
+  '/secretaria': typeof SecretariaRoute
   '/sobre': typeof SobreRoute
   '/procedimentos/$slug': typeof ProcedimentosSlugRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/galeria': typeof GaleriaRoute
   '/procedimentos': typeof ProcedimentosRouteWithChildren
+  '/secretaria': typeof SecretariaRoute
   '/sobre': typeof SobreRoute
   '/procedimentos/$slug': typeof ProcedimentosSlugRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/galeria': typeof GaleriaRoute
   '/procedimentos': typeof ProcedimentosRouteWithChildren
+  '/secretaria': typeof SecretariaRoute
   '/sobre': typeof SobreRoute
   '/procedimentos/$slug': typeof ProcedimentosSlugRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/galeria'
     | '/procedimentos'
+    | '/secretaria'
     | '/sobre'
     | '/procedimentos/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/galeria'
     | '/procedimentos'
+    | '/secretaria'
     | '/sobre'
     | '/procedimentos/$slug'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/galeria'
     | '/procedimentos'
+    | '/secretaria'
     | '/sobre'
     | '/procedimentos/$slug'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   GaleriaRoute: typeof GaleriaRoute
   ProcedimentosRoute: typeof ProcedimentosRouteWithChildren
+  SecretariaRoute: typeof SecretariaRoute
   SobreRoute: typeof SobreRoute
 }
 
@@ -153,6 +166,13 @@ declare module '@tanstack/react-router' {
       path: '/sobre'
       fullPath: '/sobre'
       preLoaderRoute: typeof SobreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/secretaria': {
+      id: '/secretaria'
+      path: '/secretaria'
+      fullPath: '/secretaria'
+      preLoaderRoute: typeof SecretariaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/procedimentos': {
@@ -234,18 +254,9 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   GaleriaRoute: GaleriaRoute,
   ProcedimentosRoute: ProcedimentosRouteWithChildren,
+  SecretariaRoute: SecretariaRoute,
   SobreRoute: SobreRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
