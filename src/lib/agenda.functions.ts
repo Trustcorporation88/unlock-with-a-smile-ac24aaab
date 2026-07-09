@@ -3,14 +3,32 @@ import { z } from "zod";
 
 const SLOT_TIMES = [
   "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
+  "12:00", "12:30",
   "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30",
 ];
+
+const WEEKDAY_TIMES = new Set([
+  "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
+  "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30",
+]);
+const SATURDAY_TIMES = new Set([
+  "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30",
+  "12:00", "12:30",
+]);
 
 function isWorkingDayISO(iso: string): boolean {
   const [y, m, d] = iso.split("-").map(Number);
   const dt = new Date(y, m - 1, d);
   const dow = dt.getDay();
   return dow >= 1 && dow <= 6;
+}
+
+function isValidSlotForDate(iso: string, time: string): boolean {
+  const [y, m, d] = iso.split("-").map(Number);
+  const dow = new Date(y, m - 1, d).getDay();
+  if (dow === 0) return false;
+  if (dow === 6) return SATURDAY_TIMES.has(time);
+  return WEEKDAY_TIMES.has(time);
 }
 
 function normTime(t: string) {
